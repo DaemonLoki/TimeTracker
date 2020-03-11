@@ -14,6 +14,11 @@
 		AC8510982418DC0E0083F4AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC8510972418DC0E0083F4AC /* Assets.xcassets */; };
 		AC85109B2418DC0E0083F4AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC85109A2418DC0E0083F4AC /* Preview Assets.xcassets */; };
 		AC85109E2418DC0E0083F4AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC85109C2418DC0E0083F4AC /* LaunchScreen.storyboard */; };
+		AC8510A72418F26C0083F4AC /* Workday+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510A52418F26C0083F4AC /* Workday+CoreDataClass.swift */; };
+		AC8510A82418F26C0083F4AC /* Workday+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510A62418F26C0083F4AC /* Workday+CoreDataProperties.swift */; };
+		AC8510AA241911420083F4AC /* WorkdaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510A9241911420083F4AC /* WorkdaysView.swift */; };
+		AC8510AC24191E850083F4AC /* WorkdayCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510AB24191E850083F4AC /* WorkdayCardView.swift */; };
+		AC8510AE24191FD50083F4AC /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510AD24191FD50083F4AC /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		AC85109A2418DC0E0083F4AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC85109D2418DC0E0083F4AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC85109F2418DC0E0083F4AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC8510A52418F26C0083F4AC /* Workday+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workday+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		AC8510A62418F26C0083F4AC /* Workday+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workday+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AC8510A9241911420083F4AC /* WorkdaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdaysView.swift; sourceTree = "<group>"; };
+		AC8510AB24191E850083F4AC /* WorkdayCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCardView.swift; sourceTree = "<group>"; };
+		AC8510AD24191FD50083F4AC /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +68,14 @@
 		AC85108D2418DC0C0083F4AC /* TimeTracker */ = {
 			isa = PBXGroup;
 			children = (
+				AC8510A52418F26C0083F4AC /* Workday+CoreDataClass.swift */,
+				AC8510A62418F26C0083F4AC /* Workday+CoreDataProperties.swift */,
 				AC85108E2418DC0C0083F4AC /* AppDelegate.swift */,
 				AC8510902418DC0C0083F4AC /* SceneDelegate.swift */,
 				AC8510952418DC0C0083F4AC /* ContentView.swift */,
+				AC8510A9241911420083F4AC /* WorkdaysView.swift */,
+				AC8510AB24191E850083F4AC /* WorkdayCardView.swift */,
+				AC8510AD24191FD50083F4AC /* Date+Extension.swift */,
 				AC8510972418DC0E0083F4AC /* Assets.xcassets */,
 				AC85109C2418DC0E0083F4AC /* LaunchScreen.storyboard */,
 				AC85109F2418DC0E0083F4AC /* Info.plist */,
@@ -151,8 +166,13 @@
 			files = (
 				AC85108F2418DC0C0083F4AC /* AppDelegate.swift in Sources */,
 				AC8510912418DC0C0083F4AC /* SceneDelegate.swift in Sources */,
+				AC8510A82418F26C0083F4AC /* Workday+CoreDataProperties.swift in Sources */,
+				AC8510AA241911420083F4AC /* WorkdaysView.swift in Sources */,
 				AC8510962418DC0C0083F4AC /* ContentView.swift in Sources */,
+				AC8510A72418F26C0083F4AC /* Workday+CoreDataClass.swift in Sources */,
+				AC8510AC24191E850083F4AC /* WorkdayCardView.swift in Sources */,
 				AC8510942418DC0C0083F4AC /* TimeTracker.xcdatamodeld in Sources */,
+				AC8510AE24191FD50083F4AC /* Date+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
