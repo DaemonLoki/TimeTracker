@@ -12,15 +12,16 @@ import CoreData
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var moc
-    //@FetchRequest(entity: Workday.entity(), sortDescriptors: []) var days: FetchedResults<Workday>
     
     var fetchRequest: FetchRequest<Workday>
     
-    @State private var startTime = ""
-    @State private var endTime = ""
+    @State private var startDate = Date()
+    @State private var endDate = Date()
     
     @State private var startTimeSet = false
     @State private var endTimeSet = false
+    
+    @State private var workDay: Workday? = nil
     
     let buttonSize: CGFloat = 80
     
@@ -29,117 +30,122 @@ struct ContentView: View {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
         
-        let date = Date()
-        
         // get today's start and end
+        let date = Date()
         let todayFrom = calendar.startOfDay(for: date)
         let todayTo = calendar.date(byAdding: .day, value: 1, to: todayFrom)!
         
-        let fromPredicate = NSPredicate(format: "%@ >= %@", date as NSDate, todayFrom as NSDate)
-        let toPredicate = NSPredicate(format: "%@ < %@", date as NSDate, todayTo as NSDate)
+        print(todayFrom)
+        print(todayTo)
+        
+        let fromPredicate = NSPredicate(format: "start >= %@", todayFrom as NSDate)
+        let toPredicate = NSPredicate(format: "start < %@", todayTo as NSDate)
         let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
         fetchRequest = FetchRequest<Workday>(entity: Workday.entity(), sortDescriptors: [], predicate: datePredicate)
     }
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Start time:")
-                    .font(.subheadline)
+            ZStack {
+                Color.offWhite
                 
-                Text(startTime == "" ? "--:--" : startTime)
-                    .font(.largeTitle)
-                
-                Text("End time:")
-                    .font(.subheadline)
-                
-                Text(endTime == "" ? "--:--" : endTime)
-                    .font(.largeTitle)
-                
-                Spacer()
-                
-                HStack(spacing: 20) {
-                    Button("Leave") {
-                        self.addEnd()
-                    }
-                    .foregroundColor(.primary)
-                    .padding()
-                    .frame(width: 100, height: 50)
-                    .background(Circle().foregroundColor(.red).frame(width: buttonSize, height: buttonSize))
-                    .padding()
-                    .opacity(endTimeSet ? 0.3 : 1.0)
-                    .disabled(endTimeSet)
-                    
-                    NavigationLink(destination: WorkdaysView()) {
-                        Text("List")
-                            .foregroundColor(.primary)
-                            .padding()
-                            .frame(width: 100, height: 50)
-                            .background(Circle().foregroundColor(.blue).frame(width: buttonSize, height: buttonSize))
-                            .padding()
+                VStack {
+                    ZStack {
+                        TodayTimeView(startTime: startTimeSet ? startDate.hourString() : "--:--", endTime: endTimeSet ? endDate.hourString() : nil)
+                        
+                        NavigationLink(destination: SetTimeView(startDate: $startDate, endDate: $endDate, workday: $workDay)) {
+                            Image(systemName: "pencil")
+                                .foregroundColor(.white)
+                        }
+                        .padding(20)
+                        .contentShape(Circle())
+                        .background(Circle().fill(Color.blue))
+                        //.buttonStyle(SimpleButtonStyle())
+                        .offset(x: 100, y: 100)
                     }
                     
-                    Button("Start") {
-                        self.addStart()
+                    Spacer()
+                    
+                    HStack(spacing: 20) {
+                        NavigationLink(destination: WorkdaysView(startTimeSet: $startTimeSet, endTimeSet: $endTimeSet, workday: $workDay)) {
+                            Text("List")
+                        }
+                        .buttonStyle(SimpleButtonStyle())
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            self.addTime()
+                        }) {
+                            Image(systemName: "plus")
+                        }
+                        .buttonStyle(SimpleButtonStyle())
+                        .disabled(startTimeSet && endTimeSet)
+                        
                     }
-                    .foregroundColor(.primary)
                     .padding()
-                    .frame(width: 100, height: 50)
-                    .background(Circle().foregroundColor(.green).frame(width: buttonSize, height: buttonSize))
-                    .padding()
-                    .opacity(startTimeSet ? 0.3 : 1.0)
-                    .disabled(startTimeSet)
                 }
-                .padding()
             }
             .navigationBarTitle("Time Tracker")
         }
         .onAppear {
             let fetchedDays = self.fetchRequest.wrappedValue
             // we already have data for the current day
-            if fetchedDays.count == 1 {
+            print("Fetched \(fetchedDays.count) days.")
+            if fetchedDays.count > 0 {
                 // we already have a start for the day
+                self.workDay = fetchedDays[0]
                 guard let startDate = fetchedDays[0].start else { return }
-                let formatter = DateFormatter()
-                formatter.dateFormat = "HH:mm"
-                self.startTime = formatter.string(from: startDate)
+                self.startDate = startDate
                 self.startTimeSet = true
                 
                 // we already have an end for the day
                 guard let endDate = fetchedDays[0].end else { return }
-                self.endTime = formatter.string(from: endDate)
+                self.endDate = endDate
                 self.endTimeSet = true
             }
         }
+        
     }
     
-    func addStart() {
+    func addTime() {
+        if !startTimeSet {
+            self.createNewWorkdayWithStartDate()
+        } else if !endTimeSet {
+            self.addEndDateToCurrentWorkday()
+        } else {
+            print("This should not be possible!")
+        }
+    }
+    
+    func createNewWorkdayWithStartDate() {
         print("start")
         let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        self.startTime = formatter.string(from: date)
+        self.startDate = date
         self.startTimeSet = true
         
         let workDay = Workday(context: self.moc)
         workDay.start = date
         
+        self.workDay = workDay
+        
         try? self.moc.save()
+        print("Saving start was successful")
     }
     
-    func addEnd() {
+    func addEndDateToCurrentWorkday() {
         let fetchedDays = self.fetchRequest.wrappedValue
-        if fetchedDays.count == 1 {
+        if startTimeSet {
             guard let _ = fetchedDays[0].start else { return }
             let date = Date()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH:mm"
-            self.endTime = formatter.string(from: date)
+            self.endDate = date
             self.endTimeSet = true
             
             fetchedDays[0].end = date
             
             fetchedDays[0].breakDuration = 0.5
+            
+            self.workDay = fetchedDays[0]
             
             try? self.moc.save()
         }
