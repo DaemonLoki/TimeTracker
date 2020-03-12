@@ -17,25 +17,37 @@ struct SetTimeView: View {
     
     var body: some View {
         GeometryReader { geo in
-            VStack(alignment: .leading) {
-                Text("Start time")
-                    .font(.title)
-                DatePicker(selection: self.$startDate, in: ...self.endDate, displayedComponents: .hourAndMinute) {
-                    Text("")
-                }
-                .datePickerStyle(WheelDatePickerStyle())
-                .frame(width: 200, height: 150)
-                .padding()
+            VStack {
                 
-                Text("End time")
-                    .font(.title)
-                
-                DatePicker(selection: self.$endDate, in: self.startDate..., displayedComponents: .hourAndMinute) {
-                    Text("")
+                HStack(alignment: .center, spacing: 20) {
+                    VStack {
+                        Text("Start time")
+                            .font(.title)
+                        DatePicker(selection: self.$startDate, in: ...self.endDate, displayedComponents: .hourAndMinute) {
+                            Text("")
+                        }
+                        .datePickerStyle(WheelDatePickerStyle())
+                        .frame(width: 100, height: 150)
+                        .padding()
+                    }
+                    
+                    VStack {
+                        Text("End time")
+                            .font(.title)
+                        
+                        DatePicker(selection: self.$endDate, in: self.startDate..., displayedComponents: .hourAndMinute) {
+                            Text("")
+                        }
+                        .datePickerStyle(WheelDatePickerStyle())
+                        .frame(width: 100, height: 150)
+                        .padding()
+                    }
                 }
-                .datePickerStyle(WheelDatePickerStyle())
-                .frame(width: 200, height: 150)
-                .padding()
+                .padding(40)
+                
+                Text(self.endDate.difference(to: self.startDate))
+                    .font(.largeTitle)
+                    .padding()
                 
                 Spacer()
                 
@@ -47,18 +59,20 @@ struct SetTimeView: View {
                     try? self.moc.save()
                     self.presentationMode.wrappedValue.dismiss()
                 }
+                    .buttonStyle(SimpleButtonStyle())
+                    .padding(40)
             }
             .frame(width: geo.size.width)
             .background(Color.offWhite)
-        .navigationBarTitle("Change times")
+            .navigationBarTitle("Change times")
         }
     }
 }
 
 /*
-struct SetTimeView_Previews: PreviewProvider {
-    static var previews: some View {
-        SetTimeView()
-    }
-}
+ struct SetTimeView_Previews: PreviewProvider {
+ static var previews: some View {
+ SetTimeView()
+ }
+ }
  */

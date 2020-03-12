@@ -22,4 +22,15 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func difference(to date: Date) -> String {
+        let timeInterval = self.timeIntervalSince(date)
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
+        formatter.allowedUnits = [.hour, .minute]
+
+        //formatter.dateFormat = "HH:mm"
+        guard let hourString = formatter.string(from: timeInterval) else { return "0:00 h"}
+        return hourString
+    }
+    
 }
