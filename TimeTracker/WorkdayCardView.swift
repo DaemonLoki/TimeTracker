@@ -30,6 +30,10 @@ struct WorkdayCardView: View {
             Text(self.workday.workingTime)
                 .font(.largeTitle)
         }
+            .padding()
+        .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
+    .padding()
+    
         
     }
 }
