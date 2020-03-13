@@ -51,16 +51,19 @@ struct SetTimeView: View {
                 
                 Spacer()
                 
-                Button("Confirm") {
-                    print("selected: \(self.startDate)")
+                Button(action: {
                     guard let day = self.workday else { return }
                     day.start = self.startDate
                     day.end = self.endDate
                     try? self.moc.save()
                     self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "checkmark")
+                        .foregroundColor(.primary)
                 }
                     .buttonStyle(SimpleButtonStyle())
                     .padding(40)
+                    
             }
             .frame(width: geo.size.width)
             .background(Color.offWhite)
