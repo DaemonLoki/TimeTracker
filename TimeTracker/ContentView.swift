@@ -34,10 +34,7 @@ struct ContentView: View {
         let date = Date()
         let todayFrom = calendar.startOfDay(for: date)
         let todayTo = calendar.date(byAdding: .day, value: 1, to: todayFrom)!
-        
-        print(todayFrom)
-        print(todayTo)
-        
+                
         let fromPredicate = NSPredicate(format: "start >= %@", todayFrom as NSDate)
         let toPredicate = NSPredicate(format: "start < %@", todayTo as NSDate)
         let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
@@ -92,7 +89,6 @@ struct ContentView: View {
         .onAppear {
             let fetchedDays = self.fetchRequest.wrappedValue
             // we already have data for the current day
-            print("Fetched \(fetchedDays.count) days.")
             if fetchedDays.count > 0 {
                 // we already have a start for the day
                 self.workDay = fetchedDays[0]
@@ -120,7 +116,6 @@ struct ContentView: View {
     }
     
     func createNewWorkdayWithStartDate() {
-        print("start")
         let date = Date()
         self.startDate = date
         self.startTimeSet = true
@@ -131,7 +126,6 @@ struct ContentView: View {
         self.workDay = workDay
         
         try? self.moc.save()
-        print("Saving start was successful")
     }
     
     func addEndDateToCurrentWorkday() {
