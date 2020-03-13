@@ -22,8 +22,8 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    func difference(to date: Date) -> String {
-        let timeInterval = self.timeIntervalSince(date)
+    func difference(to date: Date, with breakDuration: Int = 0) -> String {
+        let timeInterval = self.timeIntervalSince(date) - Double(breakDuration * 60)
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
         formatter.allowedUnits = [.hour, .minute]

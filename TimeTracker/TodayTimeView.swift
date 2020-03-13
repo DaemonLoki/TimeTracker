@@ -8,41 +8,11 @@
 
 import SwiftUI
 
-struct Arc: InsettableShape {
-    var startAngle: Angle = .degrees(0)
-    var endAngle: Double
-    var clockwise: Bool = true
-    var insetAmount: CGFloat = 0
-    
-    var animatableData: Double {
-        get { return endAngle }
-        set { endAngle = newValue }
-    }
-
-    func path(in rect: CGRect) -> Path {
-        let rotationAdjustment = Angle.degrees(90)
-        let modifiedStart = startAngle - rotationAdjustment
-        let modifiedEnd = .degrees(endAngle) - rotationAdjustment
-
-        var path = Path()
-        path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: modifiedStart, endAngle: modifiedEnd, clockwise: !clockwise)
-
-        return path
-    }
-    
-    func inset(by amount: CGFloat) -> some InsettableShape {
-        var arc = self
-        arc.insetAmount += amount
-        return arc
-    }
-}
-
 struct TodayTimeView: View {
     
     var startDate: Date?
     var endDate: Date?
-    //var startTimeSet: Bool
-    //var endTimeSet: Bool
+    var breakDuration: Double?
     
     @State private var endAngle: Double = 0.0
     
@@ -76,7 +46,6 @@ struct TodayTimeView: View {
                 Arc(endAngle: endAngle)
                     .stroke(LinearGradient(Color.codecampVeryDarkBlue, Color.codecampLessDarkBlue, Color.codecampABitLightBlue, Color.codecampReallyLightBlue), style: StrokeStyle(lineWidth: 30, lineCap: .round))
                     .animation(.interpolatingSpring(mass: 1, stiffness: 25, damping: 8, initialVelocity: 1))
-                    //.animation(.interpolatingSpring(stiffness: 25, damping: 10))
             )
             .padding(40)
             .background(
@@ -92,8 +61,9 @@ struct TodayTimeView: View {
     }
     
     func calculateDuration() -> Double {
-        let workingTimeInMinutes = Float((endDate ?? Date()).timeIntervalSince(startDate ?? Date()) / 60)
-        let workdayInMinutes = Float(60 * 8) // 8 hours
+        guard let start = startDate else { return 0.0 }
+        let workingTimeInMinutes = Double((endDate ?? Date()).timeIntervalSince(start) / 60) - (breakDuration ?? 0)
+        let workdayInMinutes = Double(60 * 8) // 8 hours
         let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
         return Double(portionOfWorkday * 360.0)
     }
@@ -101,6 +71,6 @@ struct TodayTimeView: View {
 
 struct TodayTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayTimeView(startDate: Date(), endDate: Date())
+        TodayTimeView(startDate: Date(), endDate: Date(), breakDuration: 0)
     }
 }

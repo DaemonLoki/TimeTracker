@@ -14,68 +14,101 @@ struct SetTimeView: View {
     @Binding var startDate: Date
     @Binding var endDate: Date
     @Binding var workday: Workday?
+    @Binding var breakDuration: Double
+    
+    @State private var startHours: Int = 0
+    
+    let pickerHeight: CGFloat = 80
     
     var body: some View {
         GeometryReader { geo in
-            VStack {
+            ZStack {
+                Color.offWhite
                 
-                HStack(alignment: .center, spacing: 20) {
-                    VStack {
-                        Text("Start time")
-                            .font(.title)
-                        DatePicker(selection: self.$startDate, in: ...self.endDate, displayedComponents: .hourAndMinute) {
-                            Text("")
-                        }
-                        .datePickerStyle(WheelDatePickerStyle())
-                        .frame(width: 100, height: 150)
-                        .padding()
-                    }
+                VStack {
                     
-                    VStack {
-                        Text("End time")
-                            .font(.title)
+                    VStack(alignment: .leading, spacing: 20) {
+                        HStack(spacing: 40) {
+                            Text("Start")
+                                .font(.headline)
+                                .frame(width: 80)
+                            
+                            DatePicker(selection: self.$startDate, in: ...self.endDate, displayedComponents: .hourAndMinute) {
+                                Text("Start")
+                            }
+                            .datePickerStyle(WheelDatePickerStyle())
+                            .frame(width: 140, height: self.pickerHeight)
+                            .padding()
+                            .clipped()
+                        }
                         
-                        DatePicker(selection: self.$endDate, in: self.startDate..., displayedComponents: .hourAndMinute) {
-                            Text("")
+                        HStack(spacing: 40) {
+                            Text("End")
+                                .font(.headline)
+                                .frame(width: 80)
+                            
+                            DatePicker(selection: self.$endDate, in: self.startDate..., displayedComponents: .hourAndMinute) {
+                                Text("End")
+                            }
+                            .datePickerStyle(WheelDatePickerStyle())
+                            .frame(width: 140, height: self.pickerHeight)
+                            .padding()
+                            .clipped()
                         }
-                        .datePickerStyle(WheelDatePickerStyle())
-                        .frame(width: 100, height: 150)
-                        .padding()
                     }
-                }
-                .padding(40)
-                
-                Text(self.endDate.difference(to: self.startDate))
-                    .font(.largeTitle)
                     .padding()
-                
-                Spacer()
-                
-                Button(action: {
-                    guard let day = self.workday else { return }
-                    day.start = self.startDate
-                    day.end = self.endDate
-                    try? self.moc.save()
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "checkmark")
-                        .foregroundColor(.primary)
-                }
-                    .buttonStyle(SimpleButtonStyle())
-                    .padding(40)
+                    .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
+                    .padding()
                     
+                    Stepper("Pause: \(Int(self.breakDuration))", onIncrement: {
+                            self.breakDuration += 5
+                    }, onDecrement: {
+                            if self.breakDuration >= 5 {
+                                self.breakDuration -= 5
+                            }
+                    })
+                        .padding()
+                        .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
+                        .padding(.horizontal)
+                    
+                    HStack {
+                        Text(self.calculateWorkTime())
+                            .font(.largeTitle)
+                            .padding()
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            guard let day = self.workday else { return }
+                            day.start = self.startDate
+                            day.end = self.endDate
+                            day.breakDuration = Double(self.breakDuration)
+                            try? self.moc.save()
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.primary)
+                        }
+                        .buttonStyle(SimpleButtonStyle())
+                    }
+                    .padding(.horizontal, 40)
+                    .padding(.vertical)
+                    
+                }
+                .frame(width: geo.size.width)
+                .background(Color.offWhite)
+                .navigationBarTitle("Change times")
             }
-            .frame(width: geo.size.width)
-            .background(Color.offWhite)
-            .navigationBarTitle("Change times")
         }
+    }
+    
+    func calculateWorkTime() -> String {
+        return self.endDate.difference(to: self.startDate, with: Int(self.breakDuration))
     }
 }
 
-/*
- struct SetTimeView_Previews: PreviewProvider {
- static var previews: some View {
- SetTimeView()
- }
- }
- */
+struct SetTimeView_Previews: PreviewProvider {
+    static var previews: some View {
+        SetTimeView(startDate: Binding.constant(Date()), endDate: Binding.constant(Date()), workday: Binding.constant(nil), breakDuration: Binding.constant(10))
+    }
+}

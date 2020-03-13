@@ -21,6 +21,8 @@ struct ContentView: View {
     @State private var startTimeSet = false
     @State private var endTimeSet = false
     
+    @State private var breakDuration = 0.0
+    
     @State private var workDay: Workday? = nil
     
     let buttonSize: CGFloat = 80
@@ -34,7 +36,7 @@ struct ContentView: View {
         let date = Date()
         let todayFrom = calendar.startOfDay(for: date)
         let todayTo = calendar.date(byAdding: .day, value: 1, to: todayFrom)!
-                
+        
         let fromPredicate = NSPredicate(format: "start >= %@", todayFrom as NSDate)
         let toPredicate = NSPredicate(format: "start < %@", todayTo as NSDate)
         let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
@@ -48,17 +50,15 @@ struct ContentView: View {
                 
                 VStack {
                     ZStack {
-                        TodayTimeView(startDate: startTimeSet ? startDate : nil, endDate: endTimeSet ? endDate : nil)
+                        TodayTimeView(startDate: startTimeSet ? startDate : nil, endDate: endTimeSet ? endDate : nil, breakDuration: workDay?.breakDuration)
                         
-                        NavigationLink(destination: SetTimeView(startDate: $startDate, endDate: $endDate, workday: $workDay)) {
+                        NavigationLink(destination: SetTimeView(startDate: $startDate, endDate: $endDate, workday: $workDay, breakDuration: $breakDuration)) {
                             Image(systemName: "pencil")
                                 .foregroundColor(.white)
                         }
                         .padding(20)
                         .contentShape(Circle())
-                        //.background(Circle().fill(Color.blue))
-                            .background(FancyBackground(shape: Circle(), backgroundColor: .codecampVeryDarkBlue))
-                        //.buttonStyle(SimpleButtonStyle())
+                        .background(FancyBackground(shape: Circle(), backgroundColor: .codecampVeryDarkBlue))
                         .offset(x: 98, y: 98)
                     }
                     
@@ -75,7 +75,11 @@ struct ContentView: View {
                         Button(action: {
                             self.addTime()
                         }) {
-                            Image(systemName: "plus")
+                            if startTimeSet {
+                                Image(systemName: "checkmark")
+                            } else {
+                                Image(systemName: "plus")
+                            }
                         }
                         .buttonStyle(SimpleButtonStyle())
                         .disabled(startTimeSet && endTimeSet)
@@ -95,6 +99,8 @@ struct ContentView: View {
                 guard let startDate = fetchedDays[0].start else { return }
                 self.startDate = startDate
                 self.startTimeSet = true
+                
+                self.breakDuration = fetchedDays[0].breakDuration
                 
                 // we already have an end for the day
                 guard let endDate = fetchedDays[0].end else { return }
