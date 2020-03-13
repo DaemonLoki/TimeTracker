@@ -12,7 +12,7 @@ import CoreData
 struct WorkdaysView: View {
     
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(entity: Workday.entity(), sortDescriptors: []) var workdays: FetchedResults<Workday>
+    @FetchRequest(entity: Workday.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Workday.start, ascending: false)]) var workdays: FetchedResults<Workday>
     
     @Binding var startTimeSet: Bool
     @Binding var endTimeSet: Bool
