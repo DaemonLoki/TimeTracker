@@ -51,7 +51,7 @@ struct ContentView: View {
                 
                 VStack {
                     ZStack {
-                        TodayTimeView(startTime: startTimeSet ? startDate.hourString() : "--:--", endTime: endTimeSet ? endDate.hourString() : nil)
+                        TodayTimeView(startDate: startTimeSet ? startDate : nil, endDate: endTimeSet ? endDate : nil)
                         
                         NavigationLink(destination: SetTimeView(startDate: $startDate, endDate: $endDate, workday: $workDay)) {
                             Image(systemName: "pencil")
@@ -59,9 +59,10 @@ struct ContentView: View {
                         }
                         .padding(20)
                         .contentShape(Circle())
-                        .background(Circle().fill(Color.blue))
+                        //.background(Circle().fill(Color.blue))
+                            .background(FancyBackground(shape: Circle(), backgroundColor: .codecampVeryDarkBlue))
                         //.buttonStyle(SimpleButtonStyle())
-                        .offset(x: 100, y: 100)
+                        .offset(x: 98, y: 98)
                     }
                     
                     Spacer()

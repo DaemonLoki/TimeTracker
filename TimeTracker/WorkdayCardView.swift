@@ -12,28 +12,39 @@ struct WorkdayCardView: View {
     var workday: Workday
     
     var body: some View {
-        HStack {
+        HStack(spacing: 20) {
+            VStack(spacing: -10) {
+                Text("HOURS\n")
+                    .font(.caption)
+                    .foregroundColor(.codecampVeryDarkBlue)
+                
+                Text(self.workday.workingTime)
+                    .font(.headline)
+                    .foregroundColor(.codecampVeryDarkBlue)
+            }
+                .padding(30)
+                .background(FancyBackground(shape: Circle(), isHighlighted: true))
+            
+            
             VStack(alignment: .leading) {
                 Text(self.workday.dateString)
-                    .font(.largeTitle)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
                 
                 Text("From: \(self.workday.startTime)")
-                    .font(.headline)
+                    .font(.subheadline)
                 
                 Text("To: \(self.workday.endTime)")
-                    .font(.headline)
+                    .font(.subheadline)
             }
             .padding()
             
             Spacer()
-            
-            Text(self.workday.workingTime)
-                .font(.largeTitle)
         }
-            .padding()
+        .padding()
         .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
-    .padding()
-    
+        .padding()
+        
         
     }
 }

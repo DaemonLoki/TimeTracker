@@ -12,12 +12,13 @@ import SwiftUI
 struct FancyBackground<S: Shape>: View {
     var shape: S
     var isHighlighted: Bool = false
+    var backgroundColor: Color = .offWhite
     
     var body: some View {
         Group {
             if isHighlighted {
                 shape
-                    .fill(Color.offWhite)
+                    .fill(backgroundColor)
                     .overlay(
                         shape
                             .stroke(Color.gray, lineWidth: 4)
@@ -33,7 +34,7 @@ struct FancyBackground<S: Shape>: View {
                             .mask(shape.fill(LinearGradient(Color.clear, Color.black))))
             } else {
                 shape
-                    .fill(Color.offWhite)
+                    .fill(backgroundColor)
                     .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
                     .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
             }

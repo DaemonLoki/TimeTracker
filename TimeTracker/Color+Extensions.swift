@@ -13,6 +13,10 @@ extension Color {
     
     static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
     
+    static let codecampVeryDarkBlue = Color(red: 0 / 255, green: 114 / 255, blue: 141 / 255)
+    static let codecampLessDarkBlue = Color(red: 53 / 255, green: 144 / 255, blue: 166 / 255)
+    static let codecampABitLightBlue = Color(red: 104 / 255, green: 174 / 255, blue: 191 / 255)
+    static let codecampReallyLightBlue = Color(red: 151 / 255, green: 203 / 255, blue: 214 / 255)
 }
 
 

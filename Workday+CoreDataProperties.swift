@@ -39,9 +39,12 @@ extension Workday {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
         formatter.allowedUnits = [.hour, .minute]
+        
+        let workingTimeInMinutes = Double(timeInterval).rounded() / 60
+        let hours = Int(workingTimeInMinutes / 60)
+        let minutes = Int(workingTimeInMinutes) % 60
 
-        //formatter.dateFormat = "HH:mm"
-        guard let hourString = formatter.string(from: timeInterval) else { return "0:00 h"}
-        return "\(hourString)"
+        let minuteString = String(format: "%02d", minutes)
+        return "\(hours):\(minuteString)"
     }
 }

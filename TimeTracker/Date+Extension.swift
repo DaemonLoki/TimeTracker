@@ -27,7 +27,7 @@ extension Date {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
         formatter.allowedUnits = [.hour, .minute]
-
+        
         //formatter.dateFormat = "HH:mm"
         guard let hourString = formatter.string(from: timeInterval) else { return "0:00 h"}
         return hourString

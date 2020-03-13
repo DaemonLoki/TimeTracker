@@ -39,10 +39,12 @@ struct Arc: InsettableShape {
 
 struct TodayTimeView: View {
     
-    var startTime: String?
-    var endTime: String?
+    var startDate: Date?
+    var endDate: Date?
     //var startTimeSet: Bool
     //var endTimeSet: Bool
+    
+    @State private var endAngle: Double = 0.0
     
     var body: some View {
         ZStack {
@@ -52,16 +54,16 @@ struct TodayTimeView: View {
                 Text("Start time:")
                     .font(.footnote)
                 
-                Text(startTime ?? "00:00")
+                Text(startDate?.hourString() ?? "--:--")
                     .font(.title)
                 
-                if endTime != nil {
+                if endDate != nil {
                     Group {
                         VStack {
                             Text("End time:")
                                 .font(.footnote)
                             
-                            Text(endTime ?? "00:00")
+                            Text(endDate?.hourString() ?? "00:00")
                                 .font(.title)
                         }
                     }
@@ -71,9 +73,10 @@ struct TodayTimeView: View {
             }
             .padding(60)
             .background(
-                Arc(endAngle: endTime != nil ? 190 : 0)
-                    .stroke(LinearGradient(Color.blue, Color.red), style: StrokeStyle(lineWidth: 30, lineCap: .round))
-                    .animation(.interactiveSpring())
+                Arc(endAngle: endAngle)
+                    .stroke(LinearGradient(Color.codecampVeryDarkBlue, Color.codecampLessDarkBlue, Color.codecampABitLightBlue, Color.codecampReallyLightBlue), style: StrokeStyle(lineWidth: 30, lineCap: .round))
+                    .animation(.interpolatingSpring(mass: 1, stiffness: 25, damping: 8, initialVelocity: 1))
+                    //.animation(.interpolatingSpring(stiffness: 25, damping: 10))
             )
             .padding(40)
             .background(
@@ -83,12 +86,21 @@ struct TodayTimeView: View {
                     .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
             )
         }
-        
+        .onAppear {
+            self.endAngle = self.calculateDuration()
+        }
+    }
+    
+    func calculateDuration() -> Double {
+        let workingTimeInMinutes = Float((endDate ?? Date()).timeIntervalSince(startDate ?? Date()) / 60)
+        let workdayInMinutes = Float(60 * 8) // 8 hours
+        let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
+        return Double(portionOfWorkday * 360.0)
     }
 }
 
 struct TodayTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayTimeView(startTime: "07:28", endTime: "16:54")
+        TodayTimeView(startDate: Date(), endDate: Date())
     }
 }
