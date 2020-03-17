@@ -35,6 +35,8 @@ extension Workday {
     
     public var workingTime: String {
         guard let start = start, let end = end else { return "0:00 h" }
+        return end.difference(to: start, with: Int(self.breakDuration))
+        /*
         let timeInterval = end.timeIntervalSince(start)
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
@@ -46,5 +48,6 @@ extension Workday {
 
         let minuteString = String(format: "%02d", minutes)
         return "\(hours):\(minuteString)"
+         */
     }
 }

@@ -79,12 +79,7 @@ struct SetTimeView: View {
                         Spacer()
                         
                         Button(action: {
-                            guard let day = self.workday else { return }
-                            day.start = self.startDate
-                            day.end = self.endDate
-                            day.breakDuration = Double(self.breakDuration)
-                            try? self.moc.save()
-                            self.presentationMode.wrappedValue.dismiss()
+                            self.saveWorkday()
                         }) {
                             Image(systemName: "checkmark")
                                 .foregroundColor(.primary)
@@ -104,6 +99,15 @@ struct SetTimeView: View {
     
     func calculateWorkTime() -> String {
         return self.endDate.difference(to: self.startDate, with: Int(self.breakDuration))
+    }
+    
+    func saveWorkday() {
+        guard let day = self.workday else { return }
+        day.start = self.startDate
+        day.end = self.endDate
+        day.breakDuration = Double(self.breakDuration)
+        try? self.moc.save()
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 
