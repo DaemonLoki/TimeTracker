@@ -50,7 +50,7 @@ struct ContentView: View {
                 
                 VStack {
                     ZStack {
-                        TodayTimeView(startDate: startTimeSet ? startDate : nil, endDate: endTimeSet ? endDate : nil, breakDuration: workDay?.breakDuration)
+                        TodayTimeView(workday: $workDay)
                         
                         NavigationLink(destination: SetTimeView(startDate: $startDate, endDate: $endDate, workday: $workDay, breakDuration: $breakDuration)) {
                             Image(systemName: "pencil")

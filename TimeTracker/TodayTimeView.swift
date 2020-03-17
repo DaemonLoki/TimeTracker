@@ -10,11 +10,8 @@ import SwiftUI
 
 struct TodayTimeView: View {
     
-    var startDate: Date?
-    var endDate: Date?
-    var breakDuration: Double?
-    
     @State private var endAngle: Double = 0.0
+    @Binding var workday: Workday?
     
     var body: some View {
         ZStack {
@@ -24,16 +21,16 @@ struct TodayTimeView: View {
                 Text("Start time:")
                     .font(.footnote)
                 
-                Text(startDate?.hourString() ?? "--:--")
+                Text(workday?.start?.hourString() ?? "--:--")
                     .font(.title)
                 
-                if endDate != nil {
+                if workday?.end != nil {
                     Group {
                         VStack {
                             Text("End time:")
                                 .font(.footnote)
                             
-                            Text(endDate?.hourString() ?? "00:00")
+                            Text(workday?.end?.hourString() ?? "00:00")
                                 .font(.title)
                         }
                     }
@@ -61,16 +58,18 @@ struct TodayTimeView: View {
     }
     
     func calculateDuration() -> Double {
-        guard let start = startDate else { return 0.0 }
-        let workingTimeInMinutes = Double((endDate ?? Date()).timeIntervalSince(start) / 60) - (breakDuration ?? 0)
+        guard let start = workday?.start else { return 0.0 }
+        let workingTimeInMinutes = Double((workday?.end ?? Date()).timeIntervalSince(start) / 60) - (workday?.breakDuration ?? 0)
         let workdayInMinutes = Double(60 * 8) // 8 hours
         let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
         return Double(portionOfWorkday * 360.0)
     }
 }
 
+/*
 struct TodayTimeView_Previews: PreviewProvider {
     static var previews: some View {
         TodayTimeView(startDate: Date(), endDate: Date(), breakDuration: 0)
     }
 }
+ */
