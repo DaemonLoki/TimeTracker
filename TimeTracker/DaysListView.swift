@@ -13,7 +13,7 @@ struct DaysListView: View {
     @Environment(\.managedObjectContext) var moc
     
     var workdays: FetchedResults<Workday>
-    var workday: Workday?
+    var currentWorkday: Workday?
     @Binding var startTimeSet: Bool
     @Binding var endTimeSet: Bool
     
@@ -32,8 +32,6 @@ struct DaysListView: View {
     func removeDay(at offsets: IndexSet) {
         guard let firstIndex = offsets.first else { return }
         
-        let currentWorkday = self.workday
-    
         let workday = workdays[firstIndex]
         self.moc.delete(workday)
         

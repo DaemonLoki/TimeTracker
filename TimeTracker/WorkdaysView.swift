@@ -16,7 +16,7 @@ struct WorkdaysView: View {
     
     @Binding var startTimeSet: Bool
     @Binding var endTimeSet: Bool
-    @Binding var workday: Workday?
+    @Binding var currentWorkday: Workday?
     
     @State private var selectedOption = 0
         
@@ -32,31 +32,14 @@ struct WorkdaysView: View {
                 .background(Color.offWhite)
                 
                 if self.selectedOption == 0 {
-                    DaysListView(workdays: self.workdays, workday: self.workday, startTimeSet: self.$startTimeSet, endTimeSet: self.$endTimeSet
+                    DaysListView(workdays: self.workdays, currentWorkday: self.currentWorkday, startTimeSet: self.$startTimeSet, endTimeSet: self.$endTimeSet
                     )
                 } else if self.selectedOption == 1 {
-                    Text("Coming soon")
-                    Spacer()
+                    WeeksListView(workdays: self.workdays)
                 }
             }
             .background(Color.offWhite)
             .navigationBarTitle("Your workdays")
     }
     
-    func removeDay(at offsets: IndexSet) {
-        guard let firstIndex = offsets.first else { return }
-        
-        let currentWorkday = self.workday
-    
-        let workday = workdays[firstIndex]
-        self.moc.delete(workday)
-        
-        try? self.moc.save()
-        
-        guard let currentWorkdayUnwrapped = currentWorkday else { return }
-        if workday == currentWorkdayUnwrapped {
-            startTimeSet = false
-            endTimeSet = false
-        }
-    }
 }

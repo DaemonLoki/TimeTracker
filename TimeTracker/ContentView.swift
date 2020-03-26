@@ -67,7 +67,7 @@ struct ContentView: View {
                     Spacer()
                     
                     HStack(spacing: 20) {
-                        NavigationLink(destination: WorkdaysView(startTimeSet: $startTimeSet, endTimeSet: $endTimeSet, workday: $workDay)) {
+                        NavigationLink(destination: WorkdaysView(startTimeSet: $startTimeSet, endTimeSet: $endTimeSet, currentWorkday: $workDay)) {
                             Image(systemName: "list.bullet")
                         }
                         .buttonStyle(SimpleButtonStyle())

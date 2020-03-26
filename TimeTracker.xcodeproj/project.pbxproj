@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC25AF77242D5E36001ACDC1 /* WeeksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25AF76242D5E36001ACDC1 /* WeeksListView.swift */; };
+		AC25AF79242D5F9B001ACDC1 /* WorkWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25AF78242D5F9B001ACDC1 /* WorkWeek.swift */; };
 		AC85108F2418DC0C0083F4AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85108E2418DC0C0083F4AC /* AppDelegate.swift */; };
 		AC8510912418DC0C0083F4AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510902418DC0C0083F4AC /* SceneDelegate.swift */; };
 		AC8510942418DC0C0083F4AC /* TimeTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC8510922418DC0C0083F4AC /* TimeTracker.xcdatamodeld */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC25AF76242D5E36001ACDC1 /* WeeksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksListView.swift; sourceTree = "<group>"; };
+		AC25AF78242D5F9B001ACDC1 /* WorkWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWeek.swift; sourceTree = "<group>"; };
 		AC85108B2418DC0C0083F4AC /* TimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85108E2418DC0C0083F4AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8510902418DC0C0083F4AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				ACC23BD3242D56EA006A38EC /* Views */,
-				ACC23BD0242D567C006A38EC /* CoreDataClasses */,
+				ACC23BD0242D567C006A38EC /* Model */,
 				ACC23BCF242D565E006A38EC /* Extensions */,
 				AC85108E2418DC0C0083F4AC /* AppDelegate.swift */,
 				AC8510902418DC0C0083F4AC /* SceneDelegate.swift */,
@@ -116,13 +120,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		ACC23BD0242D567C006A38EC /* CoreDataClasses */ = {
+		ACC23BD0242D567C006A38EC /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				AC8510A52418F26C0083F4AC /* Workday+CoreDataClass.swift */,
 				AC8510A62418F26C0083F4AC /* Workday+CoreDataProperties.swift */,
+				AC25AF78242D5F9B001ACDC1 /* WorkWeek.swift */,
 			);
-			name = CoreDataClasses;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		ACC23BD3242D56EA006A38EC /* Views */ = {
@@ -135,6 +140,7 @@
 				ACB6791A24194E160037B75F /* SetTimeView.swift */,
 				ACC23BAB242D36DE006A38EC /* TimePickerView.swift */,
 				AC8510A9241911420083F4AC /* WorkdaysView.swift */,
+				AC25AF76242D5E36001ACDC1 /* WeeksListView.swift */,
 				ACC23BCD242D54E8006A38EC /* DaysListView.swift */,
 				AC8510AB24191E850083F4AC /* WorkdayCardView.swift */,
 			);
@@ -212,12 +218,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC25AF79242D5F9B001ACDC1 /* WorkWeek.swift in Sources */,
 				ACC23BCE242D54E8006A38EC /* DaysListView.swift in Sources */,
 				ACB67941241A08F50037B75F /* LinearGradient+Extensions.swift in Sources */,
 				ACB6793D241A08870037B75F /* ButtonStyles.swift in Sources */,
 				ACB67945241C121D0037B75F /* Arc.swift in Sources */,
 				AC85108F2418DC0C0083F4AC /* AppDelegate.swift in Sources */,
 				AC8510912418DC0C0083F4AC /* SceneDelegate.swift in Sources */,
+				AC25AF77242D5E36001ACDC1 /* WeeksListView.swift in Sources */,
 				AC8510A82418F26C0083F4AC /* Workday+CoreDataProperties.swift in Sources */,
 				AC8510AA241911420083F4AC /* WorkdaysView.swift in Sources */,
 				ACC23BAC242D36DE006A38EC /* TimePickerView.swift in Sources */,

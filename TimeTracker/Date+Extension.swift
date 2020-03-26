@@ -33,4 +33,14 @@ extension Date {
         return hourString
     }
     
+    func getWeekOfYear() -> Int {
+        let calendar = Calendar.current
+        return calendar.component(.weekOfYear, from: self)
+    }
+    
+    func getYear() -> Int {
+        let calendar = Calendar.current
+        return calendar.component(.year, from: self)
+    }
+    
 }
