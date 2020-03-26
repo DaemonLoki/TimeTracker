@@ -84,7 +84,7 @@
 		AC85108D2418DC0C0083F4AC /* TimeTracker */ = {
 			isa = PBXGroup;
 			children = (
-				ACC23BD1242D568F006A38EC /* Views */,
+				ACC23BD3242D56EA006A38EC /* Views */,
 				ACC23BD0242D567C006A38EC /* CoreDataClasses */,
 				ACC23BCF242D565E006A38EC /* Extensions */,
 				AC85108E2418DC0C0083F4AC /* AppDelegate.swift */,
@@ -125,7 +125,7 @@
 			name = CoreDataClasses;
 			sourceTree = "<group>";
 		};
-		ACC23BD1242D568F006A38EC /* Views */ = {
+		ACC23BD3242D56EA006A38EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				AC8510952418DC0C0083F4AC /* ContentView.swift */,
@@ -138,7 +138,7 @@
 				ACC23BCD242D54E8006A38EC /* DaysListView.swift */,
 				AC8510AB24191E850083F4AC /* WorkdayCardView.swift */,
 			);
-			path = Views;
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
