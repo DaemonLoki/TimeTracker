@@ -17,19 +17,39 @@ struct WorkdaysView: View {
     @Binding var startTimeSet: Bool
     @Binding var endTimeSet: Bool
     @Binding var workday: Workday?
+    
+    @State private var selectedOption = 0
         
     var body: some View {
-        List {
-            ForEach(self.workdays, id: \.self) { (workday: Workday) in
-                WorkdayCardView(workday: workday)
-                    .listRowBackground(Color.offWhite)
+            VStack {
+                Picker(selection: $selectedOption, label: Text("Choose")) {
+                    Text("Days").tag(0)
+                    Text("Weeks").tag(1)
+                    //Text("Months").tag(2)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                .background(Color.offWhite)
+                
+                if self.selectedOption == 0 {
+                    List {
+                        ForEach(self.workdays, id: \.self) { (workday: Workday) in
+                            WorkdayCardView(workday: workday)
+                                .listRowBackground(Color.offWhite)
+                        }
+                        .onDelete(perform: removeDay)
+                        .background(Color.offWhite)
+                        
+                    }
+                    
+                    
+                } else if self.selectedOption == 1 {
+                    Text("Coming soon")
+                    Spacer()
+                }
             }
-            .onDelete(perform: removeDay)
             .background(Color.offWhite)
-            
-        }
-        .background(Color.offWhite)
-        .navigationBarTitle("Your workdays")
+            .navigationBarTitle("Your workdays")
     }
     
     func removeDay(at offsets: IndexSet) {
