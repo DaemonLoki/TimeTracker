@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC25AF77242D5E36001ACDC1 /* WeeksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25AF76242D5E36001ACDC1 /* WeeksListView.swift */; };
 		AC25AF79242D5F9B001ACDC1 /* WorkWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25AF78242D5F9B001ACDC1 /* WorkWeek.swift */; };
+		AC25AF7B242D6586001ACDC1 /* WorkweekCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25AF7A242D6586001ACDC1 /* WorkweekCardView.swift */; };
 		AC85108F2418DC0C0083F4AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85108E2418DC0C0083F4AC /* AppDelegate.swift */; };
 		AC8510912418DC0C0083F4AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510902418DC0C0083F4AC /* SceneDelegate.swift */; };
 		AC8510942418DC0C0083F4AC /* TimeTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC8510922418DC0C0083F4AC /* TimeTracker.xcdatamodeld */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		AC25AF76242D5E36001ACDC1 /* WeeksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeksListView.swift; sourceTree = "<group>"; };
 		AC25AF78242D5F9B001ACDC1 /* WorkWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWeek.swift; sourceTree = "<group>"; };
+		AC25AF7A242D6586001ACDC1 /* WorkweekCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkweekCardView.swift; sourceTree = "<group>"; };
 		AC85108B2418DC0C0083F4AC /* TimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85108E2418DC0C0083F4AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8510902418DC0C0083F4AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				ACC23BAB242D36DE006A38EC /* TimePickerView.swift */,
 				AC8510A9241911420083F4AC /* WorkdaysView.swift */,
 				AC25AF76242D5E36001ACDC1 /* WeeksListView.swift */,
+				AC25AF7A242D6586001ACDC1 /* WorkweekCardView.swift */,
 				ACC23BCD242D54E8006A38EC /* DaysListView.swift */,
 				AC8510AB24191E850083F4AC /* WorkdayCardView.swift */,
 			);
@@ -235,6 +238,7 @@
 				AC8510942418DC0C0083F4AC /* TimeTracker.xcdatamodeld in Sources */,
 				ACB6791B24194E160037B75F /* SetTimeView.swift in Sources */,
 				ACB67943241A399E0037B75F /* TodayTimeView.swift in Sources */,
+				AC25AF7B242D6586001ACDC1 /* WorkweekCardView.swift in Sources */,
 				AC8510AE24191FD50083F4AC /* Date+Extension.swift in Sources */,
 				ACB6793F241A08C70037B75F /* Color+Extensions.swift in Sources */,
 			);

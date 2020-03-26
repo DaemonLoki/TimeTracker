@@ -50,4 +50,9 @@ extension Workday {
         return "\(hours):\(minuteString)"
          */
     }
+    
+    public var workDurationInH: Double {
+        guard let start = start else { return 0.0 }
+        return (Double((self.end ?? Date()).timeIntervalSince(start) / 60) - breakDuration) / 60.0
+    }
 }

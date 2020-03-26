@@ -17,23 +17,27 @@ struct WeeksListView: View {
         
         
         for weekOfYear in workWeekDict.keys {
-            guard let days = workWeekDict[weekOfYear] else { continue }
-            guard let year = days.first?.start?.getYear() else { continue }
+            guard let days = workWeekDict[weekOfYear]?.1, let year = workWeekDict[weekOfYear]?.0 else { continue }
+            guard days.count > 0 else { continue }
             workWeeks.append(WorkWeek(weekOfYear: weekOfYear, year: year, workdays: days))
         }
     }
     
-    func createDictOfWorkWeeks(workdays: FetchedResults<Workday>) -> [Int: [Workday]] {
-        var workWeeks = [Int: [Workday]]()
+    func createDictOfWorkWeeks(workdays: FetchedResults<Workday>) -> [Int: (Int, [WorkWeek.Day])] {
+        var workWeeks = [Int: (Int, [WorkWeek.Day])]()
         for workday in workdays {
             guard let day = workday.start else { continue }
             
+            let year = day.getYear()
             let weekOfYear = day.getWeekOfYear()
+            let dayOfWeek = day.getDayOfWeek()
+            
+            let workWeekDay = WorkWeek.Day(dayOfWeek: dayOfWeek, workDuration: workday.workDurationInH)
             
             if let _ = workWeeks[weekOfYear] {
-                workWeeks[weekOfYear]!.append(workday)
+                workWeeks[weekOfYear]!.1.append(workWeekDay)
             } else {
-                workWeeks[weekOfYear] = [workday]
+                workWeeks[weekOfYear] = (year, [workWeekDay])
             }
         }
         return workWeeks
@@ -42,11 +46,8 @@ struct WeeksListView: View {
     var body: some View {
         List {
             ForEach(self.workWeeks, id: \.self) { (workWeek: WorkWeek) in
-                VStack {
-                    Text("\(workWeek.weekOfYear)")
-                }
-            .padding()
-                
+                WorkweekCardView(workWeek: workWeek)
+                    .listRowBackground(Color.offWhite)
             }
         }
         .background(Color.offWhite)

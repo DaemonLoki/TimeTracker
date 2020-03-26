@@ -43,4 +43,8 @@ extension Date {
         return calendar.component(.year, from: self)
     }
     
+    func getDayOfWeek() -> Int {
+        let calendar = Calendar.current
+        return calendar.component(.weekday, from: self)
+    }
 }
