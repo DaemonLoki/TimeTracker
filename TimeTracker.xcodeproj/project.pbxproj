@@ -39,8 +39,8 @@
 		AC85109A2418DC0E0083F4AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC85109D2418DC0E0083F4AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC85109F2418DC0E0083F4AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC8510A52418F26C0083F4AC /* Workday+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workday+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		AC8510A62418F26C0083F4AC /* Workday+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Workday+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		AC8510A52418F26C0083F4AC /* Workday+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Workday+CoreDataClass.swift"; path = "TimeTracker/Workday+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		AC8510A62418F26C0083F4AC /* Workday+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Workday+CoreDataProperties.swift"; path = "TimeTracker/Workday+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		AC8510A9241911420083F4AC /* WorkdaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdaysView.swift; sourceTree = "<group>"; };
 		AC8510AB24191E850083F4AC /* WorkdayCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCardView.swift; sourceTree = "<group>"; };
 		AC8510AD24191FD50083F4AC /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -84,22 +84,11 @@
 		AC85108D2418DC0C0083F4AC /* TimeTracker */ = {
 			isa = PBXGroup;
 			children = (
-				AC8510A52418F26C0083F4AC /* Workday+CoreDataClass.swift */,
-				AC8510A62418F26C0083F4AC /* Workday+CoreDataProperties.swift */,
+				ACC23BD1242D568F006A38EC /* Views */,
+				ACC23BD0242D567C006A38EC /* CoreDataClasses */,
+				ACC23BCF242D565E006A38EC /* Extensions */,
 				AC85108E2418DC0C0083F4AC /* AppDelegate.swift */,
 				AC8510902418DC0C0083F4AC /* SceneDelegate.swift */,
-				AC8510952418DC0C0083F4AC /* ContentView.swift */,
-				ACB67942241A399E0037B75F /* TodayTimeView.swift */,
-				ACB67944241C121D0037B75F /* Arc.swift */,
-				ACB6791A24194E160037B75F /* SetTimeView.swift */,
-				ACC23BAB242D36DE006A38EC /* TimePickerView.swift */,
-				AC8510A9241911420083F4AC /* WorkdaysView.swift */,
-				ACC23BCD242D54E8006A38EC /* DaysListView.swift */,
-				ACB6793C241A08870037B75F /* ButtonStyles.swift */,
-				ACB67940241A08F50037B75F /* LinearGradient+Extensions.swift */,
-				ACB6793E241A08C70037B75F /* Color+Extensions.swift */,
-				AC8510AB24191E850083F4AC /* WorkdayCardView.swift */,
-				AC8510AD24191FD50083F4AC /* Date+Extension.swift */,
 				AC8510972418DC0E0083F4AC /* Assets.xcassets */,
 				AC85109C2418DC0E0083F4AC /* LaunchScreen.storyboard */,
 				AC85109F2418DC0E0083F4AC /* Info.plist */,
@@ -115,6 +104,41 @@
 				AC85109A2418DC0E0083F4AC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ACC23BCF242D565E006A38EC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ACB67940241A08F50037B75F /* LinearGradient+Extensions.swift */,
+				ACB6793E241A08C70037B75F /* Color+Extensions.swift */,
+				AC8510AD24191FD50083F4AC /* Date+Extension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		ACC23BD0242D567C006A38EC /* CoreDataClasses */ = {
+			isa = PBXGroup;
+			children = (
+				AC8510A52418F26C0083F4AC /* Workday+CoreDataClass.swift */,
+				AC8510A62418F26C0083F4AC /* Workday+CoreDataProperties.swift */,
+			);
+			name = CoreDataClasses;
+			sourceTree = "<group>";
+		};
+		ACC23BD1242D568F006A38EC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC8510952418DC0C0083F4AC /* ContentView.swift */,
+				ACB67942241A399E0037B75F /* TodayTimeView.swift */,
+				ACB67944241C121D0037B75F /* Arc.swift */,
+				ACB6793C241A08870037B75F /* ButtonStyles.swift */,
+				ACB6791A24194E160037B75F /* SetTimeView.swift */,
+				ACC23BAB242D36DE006A38EC /* TimePickerView.swift */,
+				AC8510A9241911420083F4AC /* WorkdaysView.swift */,
+				ACC23BCD242D54E8006A38EC /* DaysListView.swift */,
+				AC8510AB24191E850083F4AC /* WorkdayCardView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
