@@ -32,17 +32,8 @@ struct WorkdaysView: View {
                 .background(Color.offWhite)
                 
                 if self.selectedOption == 0 {
-                    List {
-                        ForEach(self.workdays, id: \.self) { (workday: Workday) in
-                            WorkdayCardView(workday: workday)
-                                .listRowBackground(Color.offWhite)
-                        }
-                        .onDelete(perform: removeDay)
-                        .background(Color.offWhite)
-                        
-                    }
-                    
-                    
+                    DaysListView(workdays: self.workdays, workday: self.workday, startTimeSet: self.$startTimeSet, endTimeSet: self.$endTimeSet
+                    )
                 } else if self.selectedOption == 1 {
                     Text("Coming soon")
                     Spacer()
