@@ -50,16 +50,18 @@ struct ContentView: View {
                 
                 VStack {
                     ZStack {
-                        TodayTimeView(workday: $workDay)
-                        
-                        NavigationLink(destination: SetTimeView(startDate: $startDate, endDate: $endDate, workday: $workDay, breakDuration: $breakDuration)) {
-                            Image(systemName: "pencil")
-                                .foregroundColor(.white)
+                        TodayTimeView(startDate: self.startDate, startTimeSet: self.startTimeSet, endDate: self.endDate, endTimeSet: self.endTimeSet, breakDuration: self.breakDuration)
+                    
+                        if startTimeSet {
+                            NavigationLink(destination: SetTimeView(startDate: $startDate, endDate: $endDate, workday: $workDay, breakDuration: $breakDuration)) {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(.white)
+                            }
+                            .padding(20)
+                            .contentShape(Circle())
+                            .background(FancyBackground(shape: Circle(), backgroundColor: .codecampVeryDarkBlue))
+                            .offset(x: 98, y: 98)
                         }
-                        .padding(20)
-                        .contentShape(Circle())
-                        .background(FancyBackground(shape: Circle(), backgroundColor: .codecampVeryDarkBlue))
-                        .offset(x: 98, y: 98)
                     }
                     
                     Spacer()
@@ -147,6 +149,7 @@ struct ContentView: View {
             fetchedDays[0].breakDuration = 0.5
             
             self.workDay = fetchedDays[0]
+            workDay?.end = date
             
             try? self.moc.save()
         }

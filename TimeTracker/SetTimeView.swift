@@ -26,9 +26,9 @@ struct SetTimeView: View {
                 Color.offWhite
                 
                 VStack {
-                    TimePickerView(selectionDate: self.$startDate, dateRangeThrough: ...self.endDate)
+                    TimePickerView(selectionDate: self.$startDate, title: "Start", dateRangeThrough: ...self.endDate)
                     
-                    TimePickerView(selectionDate: self.$endDate, dateRangeTo: self.startDate...)
+                    TimePickerView(selectionDate: self.$endDate, title: "End", dateRangeTo: self.startDate...)
                     
                     Stepper("Pause: \(Int(self.breakDuration))", onIncrement: {
                             self.breakDuration += 5

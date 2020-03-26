@@ -11,7 +11,14 @@ import SwiftUI
 struct TodayTimeView: View {
     
     @State private var endAngle: Double = 0.0
-    @Binding var workday: Workday?
+
+    var startDate: Date
+    var startTimeSet: Bool
+    
+    var endDate: Date
+    var endTimeSet: Bool
+    
+    var breakDuration: Double
     
     var body: some View {
         ZStack {
@@ -21,16 +28,16 @@ struct TodayTimeView: View {
                 Text("Start time:")
                     .font(.footnote)
                 
-                Text(workday?.start?.hourString() ?? "--:--")
+                Text(startTimeSet ? startDate.hourString() : "--:--")
                     .font(.title)
                 
-                if workday?.end != nil {
+                if endTimeSet {
                     Group {
                         VStack {
                             Text("End time:")
                                 .font(.footnote)
                             
-                            Text(workday?.end?.hourString() ?? "00:00")
+                            Text(endDate.hourString())
                                 .font(.title)
                         }
                     }
@@ -58,11 +65,16 @@ struct TodayTimeView: View {
     }
     
     func calculateDuration() -> Double {
-        guard let start = workday?.start else { return 0.0 }
-        let workingTimeInMinutes = Double((workday?.end ?? Date()).timeIntervalSince(start) / 60) - (workday?.breakDuration ?? 0)
-        let workdayInMinutes = Double(60 * 8) // 8 hours
-        let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
-        return Double(portionOfWorkday * 360.0)
+        if startTimeSet {
+            let currentEnd = endTimeSet ? endDate : Date()
+            let workingTimeInMinutes = Double(currentEnd.timeIntervalSince(startDate) / 60) - breakDuration
+            let workdayInMinutes = Double(60 * 8) // 8 hours
+            let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
+            let portionOfWorkdayDegree = Double(portionOfWorkday * 360.0)
+            return portionOfWorkdayDegree
+        } else {
+            return 0.0
+        }
     }
 }
 

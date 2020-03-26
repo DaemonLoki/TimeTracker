@@ -11,6 +11,7 @@ import SwiftUI
 struct TimePickerView: View {
     
     @Binding var selectionDate: Date
+    var title: String
     var dateRangeThrough: PartialRangeThrough<Date>?
     var dateRangeTo: PartialRangeFrom<Date>?
     
@@ -19,7 +20,7 @@ struct TimePickerView: View {
     
     var body: some View {
         HStack(spacing: 40) {
-            Text("Start")
+            Text(title)
                 .font(.headline)
                 .frame(width: 80)
             
@@ -27,7 +28,7 @@ struct TimePickerView: View {
             
             if dateRangeThrough != nil {
                 DatePicker(selection: self.$selectionDate, in: dateRangeThrough!, displayedComponents: .hourAndMinute) {
-                    Text("Start")
+                    Text("Time")
                     }
                     .datePickerStyle(WheelDatePickerStyle())
                     .frame(width: 140, height: self.pickerHeight)
@@ -35,7 +36,7 @@ struct TimePickerView: View {
                     .clipped()
             } else {
                 DatePicker(selection: self.$selectionDate, in: dateRangeTo!, displayedComponents: .hourAndMinute) {
-                Text("Start")
+                Text("Time")
                 }
                 .datePickerStyle(WheelDatePickerStyle())
                 .frame(width: 140, height: self.pickerHeight)
@@ -54,7 +55,7 @@ struct TimePickerView_Previews: PreviewProvider {
         ZStack {
             Color.offWhite
             
-            TimePickerView(selectionDate: Binding.constant(Date()), dateRangeThrough: ...Date())
+            TimePickerView(selectionDate: Binding.constant(Date()), title: "Start", dateRangeThrough: ...Date())
         }
         .edgesIgnoringSafeArea(.all)
     }
