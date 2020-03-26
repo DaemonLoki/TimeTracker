@@ -23,4 +23,13 @@ struct WorkWeek: Hashable {
             currentValue + day.workDuration
         }
     }
+    
+    var listOfWorkDays: [WorkWeek.Day] {
+        var listOfWorkDays = [WorkWeek.Day]()
+        for i in 0..<7 {
+            let day = workdays.first(where: { $0.dayOfWeek == i })
+            listOfWorkDays.append(day ?? WorkWeek.Day(dayOfWeek: i, workDuration: 0.0))
+        }
+        return listOfWorkDays
+    }
 }

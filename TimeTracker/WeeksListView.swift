@@ -16,7 +16,7 @@ struct WeeksListView: View {
         let workWeekDict = createDictOfWorkWeeks(workdays: workdays)
         
         
-        for weekOfYear in workWeekDict.keys {
+        for weekOfYear in workWeekDict.keys.sorted().reversed() {
             guard let days = workWeekDict[weekOfYear]?.1, let year = workWeekDict[weekOfYear]?.0 else { continue }
             guard days.count > 0 else { continue }
             workWeeks.append(WorkWeek(weekOfYear: weekOfYear, year: year, workdays: days))
