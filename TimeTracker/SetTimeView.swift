@@ -26,39 +26,9 @@ struct SetTimeView: View {
                 Color.offWhite
                 
                 VStack {
+                    TimePickerView(selectionDate: self.$startDate, dateRangeThrough: ...self.endDate)
                     
-                    VStack(alignment: .leading, spacing: 20) {
-                        HStack(spacing: 40) {
-                            Text("Start")
-                                .font(.headline)
-                                .frame(width: 80)
-                            
-                            DatePicker(selection: self.$startDate, in: ...self.endDate, displayedComponents: .hourAndMinute) {
-                                Text("Start")
-                            }
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .frame(width: 140, height: self.pickerHeight)
-                            .padding()
-                            .clipped()
-                        }
-                        
-                        HStack(spacing: 40) {
-                            Text("End")
-                                .font(.headline)
-                                .frame(width: 80)
-                            
-                            DatePicker(selection: self.$endDate, in: self.startDate..., displayedComponents: .hourAndMinute) {
-                                Text("End")
-                            }
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .frame(width: 140, height: self.pickerHeight)
-                            .padding()
-                            .clipped()
-                        }
-                    }
-                    .padding()
-                    .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
-                    .padding()
+                    TimePickerView(selectionDate: self.$endDate, dateRangeTo: self.startDate...)
                     
                     Stepper("Pause: \(Int(self.breakDuration))", onIncrement: {
                             self.breakDuration += 5
@@ -69,7 +39,7 @@ struct SetTimeView: View {
                     })
                         .padding()
                         .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
-                        .padding(.horizontal)
+                        .padding()
                     
                     HStack {
                         Text(self.calculateWorkTime())
@@ -113,6 +83,6 @@ struct SetTimeView: View {
 
 struct SetTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        SetTimeView(startDate: Binding.constant(Date()), endDate: Binding.constant(Date()), workday: Binding.constant(nil), breakDuration: Binding.constant(10))
+        SetTimeView(startDate: Binding.constant(Date()), endDate: Binding.constant(Date()), workday: Binding.constant(nil), breakDuration: Binding.constant(0))
     }
 }

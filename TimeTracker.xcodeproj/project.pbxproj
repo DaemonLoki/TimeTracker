@@ -25,6 +25,7 @@
 		ACB67941241A08F50037B75F /* LinearGradient+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB67940241A08F50037B75F /* LinearGradient+Extensions.swift */; };
 		ACB67943241A399E0037B75F /* TodayTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB67942241A399E0037B75F /* TodayTimeView.swift */; };
 		ACB67945241C121D0037B75F /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB67944241C121D0037B75F /* Arc.swift */; };
+		ACC23BAC242D36DE006A38EC /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC23BAB242D36DE006A38EC /* TimePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		ACB67940241A08F50037B75F /* LinearGradient+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+Extensions.swift"; sourceTree = "<group>"; };
 		ACB67942241A399E0037B75F /* TodayTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTimeView.swift; sourceTree = "<group>"; };
 		ACB67944241C121D0037B75F /* Arc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
+		ACC23BAB242D36DE006A38EC /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				ACB67942241A399E0037B75F /* TodayTimeView.swift */,
 				ACB67944241C121D0037B75F /* Arc.swift */,
 				ACB6791A24194E160037B75F /* SetTimeView.swift */,
+				ACC23BAB242D36DE006A38EC /* TimePickerView.swift */,
 				AC8510A9241911420083F4AC /* WorkdaysView.swift */,
 				ACB6793C241A08870037B75F /* ButtonStyles.swift */,
 				ACB67940241A08F50037B75F /* LinearGradient+Extensions.swift */,
@@ -189,6 +192,7 @@
 				AC8510912418DC0C0083F4AC /* SceneDelegate.swift in Sources */,
 				AC8510A82418F26C0083F4AC /* Workday+CoreDataProperties.swift in Sources */,
 				AC8510AA241911420083F4AC /* WorkdaysView.swift in Sources */,
+				ACC23BAC242D36DE006A38EC /* TimePickerView.swift in Sources */,
 				AC8510962418DC0C0083F4AC /* ContentView.swift in Sources */,
 				AC8510A72418F26C0083F4AC /* Workday+CoreDataClass.swift in Sources */,
 				AC8510AC24191E850083F4AC /* WorkdayCardView.swift in Sources */,
