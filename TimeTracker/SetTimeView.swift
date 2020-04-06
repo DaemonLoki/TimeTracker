@@ -21,23 +21,21 @@ struct SetTimeView: View {
     let pickerHeight: CGFloat = 80
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Color.offWhite
-                
+        ZStack {
+            Color.offWhite
+            
+            ScrollView {
                 VStack {
                     TimePickerView(selectionDate: self.$startDate, title: "Start", dateRangeThrough: ...self.endDate)
-                        .padding()
                     
                     TimePickerView(selectionDate: self.$endDate, title: "End", dateRangeTo: self.startDate...)
-                        .padding()
                     
                     Stepper("Pause: \(Int(self.breakDuration))", onIncrement: {
-                            self.breakDuration += 5
+                        self.breakDuration += 5
                     }, onDecrement: {
-                            if self.breakDuration >= 5 {
-                                self.breakDuration -= 5
-                            }
+                        if self.breakDuration >= 5 {
+                            self.breakDuration -= 5
+                        }
                     })
                         .padding()
                         .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
@@ -62,11 +60,9 @@ struct SetTimeView: View {
                     .padding(.vertical)
                     
                 }
-            .padding()
-                .frame(width: geo.size.width)
-                .background(Color.offWhite)
-                .navigationBarTitle("Change times")
             }
+            .background(Color.offWhite)
+            .navigationBarTitle("Change times")
         }
     }
     

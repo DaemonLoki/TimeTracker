@@ -19,10 +19,10 @@ struct TimePickerView: View {
     let pickerHeight: CGFloat = 80
     
     var body: some View {
-        HStack(spacing: 40) {
+        HStack(spacing: 20) {
             Text(title)
                 .font(.headline)
-                .frame(width: 80)
+                .multilineTextAlignment(.leading)
             
             Spacer()
             
