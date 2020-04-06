@@ -26,29 +26,16 @@ extension Workday {
     }
 
     public var startTime: String {
-        start?.hourString() ?? "Unknown"
+        start?.hourString() ?? "--:--"
     }
     
     public var endTime: String {
-        end?.hourString() ?? "Unknown"
+        end?.hourString() ?? "--:--"
     }
     
     public var workingTime: String {
         guard let start = start, let end = end else { return "0:00 h" }
         return end.difference(to: start, with: Int(self.breakDuration))
-        /*
-        let timeInterval = end.timeIntervalSince(start)
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .abbreviated
-        formatter.allowedUnits = [.hour, .minute]
-        
-        let workingTimeInMinutes = Double(timeInterval).rounded() / 60
-        let hours = Int(workingTimeInMinutes / 60)
-        let minutes = Int(workingTimeInMinutes) % 60
-
-        let minuteString = String(format: "%02d", minutes)
-        return "\(hours):\(minuteString)"
-         */
     }
     
     public var workDurationInH: Double {

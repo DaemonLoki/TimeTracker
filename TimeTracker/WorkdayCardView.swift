@@ -13,56 +13,30 @@ struct WorkdayCardView: View {
     @State private var endAngle: Double = 0.0
     
     var workday: Workday
+    var workDuration: Double
+    
+    init(workday: Workday) {
+        self.workday = workday
+        
+        guard let start = workday.start else {
+            self.workDuration = 0.0
+            return
+        }
+        let workingTimeInMinutes = Double((workday.end ?? Date()).timeIntervalSince(start) / 60) - workday.breakDuration
+        let workdayInMinutes = Double(60 * 8) // 8 hours
+        let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
+        self.workDuration = Double(portionOfWorkday * 360.0)
+    }
     
     var body: some View {
         HStack(spacing: 20) {
-            VStack() {
-                Text("TIME")
-                    .font(.caption)
-                    .foregroundColor(.codecampVeryDarkBlue)
-                
-                Text(self.workday.workingTime)
-                    .font(.headline)
-                    .foregroundColor(.codecampVeryDarkBlue)
-            }
-            .frame(width: 100, height: 100)
-            .padding(.vertical, 40)
-                .background(
-                    Arc(endAngle: endAngle)
-                        .stroke(LinearGradient(Color.codecampVeryDarkBlue, Color.codecampLessDarkBlue, Color.codecampABitLightBlue, Color.codecampReallyLightBlue), style: StrokeStyle(lineWidth: 10, lineCap: .round))
-                        .animation(.interpolatingSpring(mass: 1, stiffness: 25, damping: 8, initialVelocity: 1))
-                )
-                .background(FancyBackground(shape: Circle(), isHighlighted: true))
+            WorkdayCardDuration(workingTime: String(format: "%.2f h", self.workday.workDurationInH), workDuration: self.workDuration)
             
-            
-            VStack(alignment: .leading) {
-                Text(self.workday.dateString)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                
-                Text("From: \(self.workday.startTime)")
-                    .font(.subheadline)
-                
-                Text("To: \(self.workday.endTime)")
-                    .font(.subheadline)
-            }
-            .padding()
-            
-            Spacer()
+            WorkdayDetails(dayOfWeek: workday.start!.getNameOfWeekday(), dateString: self.workday.dateString, startTime: workday.startTime, endTime: workday.endTime)
         }
         .padding()
         .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
         .padding()
-        .onAppear {
-            self.endAngle = self.calculateDuration()
-        }
     }
     
-    func calculateDuration() -> Double {
-        guard let start = workday.start else { return 0.0 }
-        let workingTimeInMinutes = Double((workday.end ?? Date()).timeIntervalSince(start) / 60) - workday.breakDuration
-        let workdayInMinutes = Double(60 * 8) // 8 hours
-        let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
-        return Double(portionOfWorkday * 360.0)
-    }
 }

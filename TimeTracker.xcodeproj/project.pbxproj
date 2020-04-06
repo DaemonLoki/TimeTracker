@@ -13,6 +13,8 @@
 		AC647A2F243B2E3600A3CB00 /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC647A2E243B2E3600A3CB00 /* EditButton.swift */; };
 		AC647A31243B316B00A3CB00 /* AddTimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC647A30243B316B00A3CB00 /* AddTimeButton.swift */; };
 		AC647A33243B35F900A3CB00 /* ShowWorkdaysButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC647A32243B35F900A3CB00 /* ShowWorkdaysButton.swift */; };
+		AC647A36243B3F1F00A3CB00 /* WorkdayCardDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC647A35243B3F1F00A3CB00 /* WorkdayCardDuration.swift */; };
+		AC647A38243B425700A3CB00 /* WorkdayDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC647A37243B425700A3CB00 /* WorkdayDetails.swift */; };
 		AC85108F2418DC0C0083F4AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85108E2418DC0C0083F4AC /* AppDelegate.swift */; };
 		AC8510912418DC0C0083F4AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510902418DC0C0083F4AC /* SceneDelegate.swift */; };
 		AC8510942418DC0C0083F4AC /* TimeTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC8510922418DC0C0083F4AC /* TimeTracker.xcdatamodeld */; };
@@ -42,6 +44,8 @@
 		AC647A2E243B2E3600A3CB00 /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
 		AC647A30243B316B00A3CB00 /* AddTimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeButton.swift; sourceTree = "<group>"; };
 		AC647A32243B35F900A3CB00 /* ShowWorkdaysButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowWorkdaysButton.swift; sourceTree = "<group>"; };
+		AC647A35243B3F1F00A3CB00 /* WorkdayCardDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCardDuration.swift; sourceTree = "<group>"; };
+		AC647A37243B425700A3CB00 /* WorkdayDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayDetails.swift; sourceTree = "<group>"; };
 		AC85108B2418DC0C0083F4AC /* TimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85108E2418DC0C0083F4AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8510902418DC0C0083F4AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +81,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC647A34243B3EFB00A3CB00 /* WorkdayCard */ = {
+			isa = PBXGroup;
+			children = (
+				AC8510AB24191E850083F4AC /* WorkdayCardView.swift */,
+				AC647A35243B3F1F00A3CB00 /* WorkdayCardDuration.swift */,
+				AC647A37243B425700A3CB00 /* WorkdayDetails.swift */,
+			);
+			name = WorkdayCard;
+			sourceTree = "<group>";
+		};
+		AC647A39243B624B00A3CB00 /* WorkweekCard */ = {
+			isa = PBXGroup;
+			children = (
+				AC25AF7A242D6586001ACDC1 /* WorkweekCardView.swift */,
+			);
+			name = WorkweekCard;
+			sourceTree = "<group>";
+		};
+		AC647A3A243B627B00A3CB00 /* WorkdaysList */ = {
+			isa = PBXGroup;
+			children = (
+				AC8510A9241911420083F4AC /* WorkdaysView.swift */,
+				AC25AF76242D5E36001ACDC1 /* WeeksListView.swift */,
+				ACC23BCD242D54E8006A38EC /* DaysListView.swift */,
+				AC647A39243B624B00A3CB00 /* WorkweekCard */,
+				AC647A34243B3EFB00A3CB00 /* WorkdayCard */,
+			);
+			name = WorkdaysList;
+			sourceTree = "<group>";
+		};
+		AC647A3B243B629100A3CB00 /* Homescreen */ = {
+			isa = PBXGroup;
+			children = (
+				AC8510952418DC0C0083F4AC /* ContentView.swift */,
+				AC647A2E243B2E3600A3CB00 /* EditButton.swift */,
+				AC647A32243B35F900A3CB00 /* ShowWorkdaysButton.swift */,
+				AC647A30243B316B00A3CB00 /* AddTimeButton.swift */,
+				ACB67942241A399E0037B75F /* TodayTimeView.swift */,
+			);
+			name = Homescreen;
+			sourceTree = "<group>";
+		};
+		AC647A3C243B62B200A3CB00 /* SetTimeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				ACB6791A24194E160037B75F /* SetTimeView.swift */,
+				ACC23BAB242D36DE006A38EC /* TimePickerView.swift */,
+			);
+			name = SetTimeScreen;
+			sourceTree = "<group>";
+		};
 		AC8510822418DC0C0083F4AC = {
 			isa = PBXGroup;
 			children = (
@@ -141,20 +196,11 @@
 		ACC23BD3242D56EA006A38EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AC8510952418DC0C0083F4AC /* ContentView.swift */,
-				AC647A32243B35F900A3CB00 /* ShowWorkdaysButton.swift */,
-				AC647A30243B316B00A3CB00 /* AddTimeButton.swift */,
-				ACB67942241A399E0037B75F /* TodayTimeView.swift */,
+				AC647A3C243B62B200A3CB00 /* SetTimeScreen */,
+				AC647A3B243B629100A3CB00 /* Homescreen */,
+				AC647A3A243B627B00A3CB00 /* WorkdaysList */,
 				ACB67944241C121D0037B75F /* Arc.swift */,
 				ACB6793C241A08870037B75F /* ButtonStyles.swift */,
-				ACB6791A24194E160037B75F /* SetTimeView.swift */,
-				AC647A2E243B2E3600A3CB00 /* EditButton.swift */,
-				ACC23BAB242D36DE006A38EC /* TimePickerView.swift */,
-				AC8510A9241911420083F4AC /* WorkdaysView.swift */,
-				AC25AF76242D5E36001ACDC1 /* WeeksListView.swift */,
-				AC25AF7A242D6586001ACDC1 /* WorkweekCardView.swift */,
-				ACC23BCD242D54E8006A38EC /* DaysListView.swift */,
-				AC8510AB24191E850083F4AC /* WorkdayCardView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -235,11 +281,13 @@
 				ACB67941241A08F50037B75F /* LinearGradient+Extensions.swift in Sources */,
 				ACB6793D241A08870037B75F /* ButtonStyles.swift in Sources */,
 				ACB67945241C121D0037B75F /* Arc.swift in Sources */,
+				AC647A36243B3F1F00A3CB00 /* WorkdayCardDuration.swift in Sources */,
 				AC85108F2418DC0C0083F4AC /* AppDelegate.swift in Sources */,
 				AC8510912418DC0C0083F4AC /* SceneDelegate.swift in Sources */,
 				AC25AF77242D5E36001ACDC1 /* WeeksListView.swift in Sources */,
 				AC8510A82418F26C0083F4AC /* Workday+CoreDataProperties.swift in Sources */,
 				AC8510AA241911420083F4AC /* WorkdaysView.swift in Sources */,
+				AC647A38243B425700A3CB00 /* WorkdayDetails.swift in Sources */,
 				ACC23BAC242D36DE006A38EC /* TimePickerView.swift in Sources */,
 				AC8510962418DC0C0083F4AC /* ContentView.swift in Sources */,
 				AC8510A72418F26C0083F4AC /* Workday+CoreDataClass.swift in Sources */,

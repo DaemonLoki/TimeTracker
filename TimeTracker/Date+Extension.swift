@@ -47,4 +47,10 @@ extension Date {
         let calendar = Calendar.current
         return calendar.component(.weekday, from: self)
     }
+    
+    func getNameOfWeekday() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self)
+    }
 }
