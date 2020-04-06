@@ -27,8 +27,10 @@ struct SetTimeView: View {
                 
                 VStack {
                     TimePickerView(selectionDate: self.$startDate, title: "Start", dateRangeThrough: ...self.endDate)
+                        .padding()
                     
                     TimePickerView(selectionDate: self.$endDate, title: "End", dateRangeTo: self.startDate...)
+                        .padding()
                     
                     Stepper("Pause: \(Int(self.breakDuration))", onIncrement: {
                             self.breakDuration += 5
@@ -60,6 +62,7 @@ struct SetTimeView: View {
                     .padding(.vertical)
                     
                 }
+            .padding()
                 .frame(width: geo.size.width)
                 .background(Color.offWhite)
                 .navigationBarTitle("Change times")

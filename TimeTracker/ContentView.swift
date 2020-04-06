@@ -53,14 +53,7 @@ struct ContentView: View {
                         TodayTimeView(startDate: self.startDate, startTimeSet: self.startTimeSet, endDate: self.endDate, endTimeSet: self.endTimeSet, breakDuration: self.breakDuration)
                     
                         if startTimeSet {
-                            NavigationLink(destination: SetTimeView(startDate: $startDate, endDate: $endDate, workday: $workDay, breakDuration: $breakDuration)) {
-                                Image(systemName: "pencil")
-                                    .foregroundColor(.white)
-                            }
-                            .padding(20)
-                            .contentShape(Circle())
-                            .background(FancyBackground(shape: Circle(), backgroundColor: .codecampVeryDarkBlue))
-                            .offset(x: 98, y: 98)
+                            EditButton(startDate: $startDate, endDate: $endDate, workDay: $workDay, breakDuration: $breakDuration)
                         }
                     }
                     
@@ -92,6 +85,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("Time Tracker")
         }
+        .accentColor(.codecampVeryDarkBlue)
         .onAppear {
             let fetchedDays = self.fetchRequest.wrappedValue
             // we already have data for the current day
@@ -105,6 +99,7 @@ struct ContentView: View {
                 self.breakDuration = fetchedDays[0].breakDuration
                 
                 // we already have an end for the day
+                self.endDate = Date()
                 guard let endDate = fetchedDays[0].end else { return }
                 self.endDate = endDate
                 self.endTimeSet = true

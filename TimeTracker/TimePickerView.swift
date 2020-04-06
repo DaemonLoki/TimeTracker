@@ -29,14 +29,14 @@ struct TimePickerView: View {
             if dateRangeThrough != nil {
                 DatePicker(selection: self.$selectionDate, in: dateRangeThrough!, displayedComponents: .hourAndMinute) {
                     Text("Time")
-                    }
-                    .datePickerStyle(WheelDatePickerStyle())
-                    .frame(width: 140, height: self.pickerHeight)
-                    .padding()
-                    .clipped()
+                }
+                .datePickerStyle(WheelDatePickerStyle())
+                .frame(width: 140, height: self.pickerHeight)
+                .padding()
+                .clipped()
             } else {
                 DatePicker(selection: self.$selectionDate, in: dateRangeTo!, displayedComponents: .hourAndMinute) {
-                Text("Time")
+                    Text("Time")
                 }
                 .datePickerStyle(WheelDatePickerStyle())
                 .frame(width: 140, height: self.pickerHeight)
@@ -44,9 +44,9 @@ struct TimePickerView: View {
                 .clipped()
             }
         }
-            .padding()
-            .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
-            .padding()
+        .padding()
+        .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
+        .padding()
     }
 }
 
