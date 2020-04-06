@@ -11,6 +11,8 @@
 		AC25AF79242D5F9B001ACDC1 /* WorkWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25AF78242D5F9B001ACDC1 /* WorkWeek.swift */; };
 		AC25AF7B242D6586001ACDC1 /* WorkweekCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25AF7A242D6586001ACDC1 /* WorkweekCardView.swift */; };
 		AC647A2F243B2E3600A3CB00 /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC647A2E243B2E3600A3CB00 /* EditButton.swift */; };
+		AC647A31243B316B00A3CB00 /* AddTimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC647A30243B316B00A3CB00 /* AddTimeButton.swift */; };
+		AC647A33243B35F900A3CB00 /* ShowWorkdaysButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC647A32243B35F900A3CB00 /* ShowWorkdaysButton.swift */; };
 		AC85108F2418DC0C0083F4AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85108E2418DC0C0083F4AC /* AppDelegate.swift */; };
 		AC8510912418DC0C0083F4AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510902418DC0C0083F4AC /* SceneDelegate.swift */; };
 		AC8510942418DC0C0083F4AC /* TimeTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC8510922418DC0C0083F4AC /* TimeTracker.xcdatamodeld */; };
@@ -38,6 +40,8 @@
 		AC25AF78242D5F9B001ACDC1 /* WorkWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkWeek.swift; sourceTree = "<group>"; };
 		AC25AF7A242D6586001ACDC1 /* WorkweekCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkweekCardView.swift; sourceTree = "<group>"; };
 		AC647A2E243B2E3600A3CB00 /* EditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
+		AC647A30243B316B00A3CB00 /* AddTimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeButton.swift; sourceTree = "<group>"; };
+		AC647A32243B35F900A3CB00 /* ShowWorkdaysButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowWorkdaysButton.swift; sourceTree = "<group>"; };
 		AC85108B2418DC0C0083F4AC /* TimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85108E2418DC0C0083F4AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8510902418DC0C0083F4AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				AC8510952418DC0C0083F4AC /* ContentView.swift */,
+				AC647A32243B35F900A3CB00 /* ShowWorkdaysButton.swift */,
+				AC647A30243B316B00A3CB00 /* AddTimeButton.swift */,
 				ACB67942241A399E0037B75F /* TodayTimeView.swift */,
 				ACB67944241C121D0037B75F /* Arc.swift */,
 				ACB6793C241A08870037B75F /* ButtonStyles.swift */,
@@ -242,8 +248,10 @@
 				ACB6791B24194E160037B75F /* SetTimeView.swift in Sources */,
 				AC647A2F243B2E3600A3CB00 /* EditButton.swift in Sources */,
 				ACB67943241A399E0037B75F /* TodayTimeView.swift in Sources */,
+				AC647A31243B316B00A3CB00 /* AddTimeButton.swift in Sources */,
 				AC25AF7B242D6586001ACDC1 /* WorkweekCardView.swift in Sources */,
 				AC8510AE24191FD50083F4AC /* Date+Extension.swift in Sources */,
+				AC647A33243B35F900A3CB00 /* ShowWorkdaysButton.swift in Sources */,
 				ACB6793F241A08C70037B75F /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

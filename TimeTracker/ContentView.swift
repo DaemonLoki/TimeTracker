@@ -60,25 +60,11 @@ struct ContentView: View {
                     Spacer()
                     
                     HStack(spacing: 20) {
-                        NavigationLink(destination: WorkdaysView(startTimeSet: $startTimeSet, endTimeSet: $endTimeSet, currentWorkday: $workDay)) {
-                            Image(systemName: "list.bullet")
-                        }
-                        .buttonStyle(SimpleButtonStyle())
+                        ShowWorkdaysButton(startTimeSet: $startTimeSet, endTimeSet: $endTimeSet, workDay: $workDay)
                         
                         Spacer()
                         
-                        Button(action: {
-                            self.addTime()
-                        }) {
-                            if startTimeSet {
-                                Image(systemName: "checkmark")
-                            } else {
-                                Image(systemName: "plus")
-                            }
-                        }
-                        .buttonStyle(SimpleButtonStyle())
-                        .disabled(startTimeSet && endTimeSet)
-                        
+                        AddTimeButton(startTimeSet: $startTimeSet, endTimeSet: $endTimeSet, startDate: $startDate, endDate: $endDate, workDay: $workDay, fetchedDays: fetchRequest.wrappedValue)
                     }
                     .padding()
                 }
@@ -106,48 +92,6 @@ struct ContentView: View {
             }
         }
         
-    }
-    
-    func addTime() {
-        if !startTimeSet {
-            self.createNewWorkdayWithStartDate()
-        } else if !endTimeSet {
-            self.addEndDateToCurrentWorkday()
-        } else {
-            print("This should not be possible!")
-        }
-    }
-    
-    func createNewWorkdayWithStartDate() {
-        let date = Date()
-        self.startDate = date
-        self.startTimeSet = true
-        
-        let workDay = Workday(context: self.moc)
-        workDay.start = date
-        
-        self.workDay = workDay
-        
-        try? self.moc.save()
-    }
-    
-    func addEndDateToCurrentWorkday() {
-        let fetchedDays = self.fetchRequest.wrappedValue
-        if startTimeSet {
-            guard let _ = fetchedDays[0].start else { return }
-            let date = Date()
-            self.endDate = date
-            self.endTimeSet = true
-            
-            fetchedDays[0].end = date
-            
-            fetchedDays[0].breakDuration = 0.5
-            
-            self.workDay = fetchedDays[0]
-            workDay?.end = date
-            
-            try? self.moc.save()
-        }
     }
 }
 
