@@ -47,7 +47,7 @@ struct SetTimeView: View {
                 }
             }
             .background(Color.offWhite)
-            .navigationBarTitle("Change times")
+            .navigationBarTitle(workday.start?.headlineString() ?? "Today")
         }
     }
     

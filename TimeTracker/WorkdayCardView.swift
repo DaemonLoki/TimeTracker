@@ -19,7 +19,7 @@ struct WorkdayCardView: View {
             HStack(spacing: 20) {
                 WorkdayCardDuration(workingTime: String(format: "%.2f h", self.workday.workDurationInH), workDuration: self.workday.workDur)
                 
-                WorkdayDetails(dayOfWeek: workday.start!.getNameOfWeekday(), dateString: self.workday.dateString, startTime: workday.startTime, endTime: workday.endTime)
+                WorkdayDetails(dayOfWeek: workday.start!.getNameOfWeekday(), dateString: self.workday.dateString, startTime: workday.startTime, endTime: workday.endTime, breakDuration: workday.breakDurationString)
             }
             .padding()
             .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))

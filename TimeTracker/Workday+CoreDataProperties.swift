@@ -65,6 +65,13 @@ extension Workday {
         let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
         return Double(portionOfWorkday * 360.0)
     }
+    
+    public var breakDurationString: String {
+        let hours = Int(breakDuration / 60)
+        let minutes = Int(breakDuration) % 60
+        let minutesString = minutes < 10 ? "0\(minutes)" : "\(minutes)"
+        return "\(hours):\(minutesString)"
+    }
 }
 
 extension Workday {

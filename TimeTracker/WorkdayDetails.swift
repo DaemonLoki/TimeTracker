@@ -14,6 +14,7 @@ struct WorkdayDetails: View {
     var dateString: String
     var startTime: String
     var endTime: String
+    var breakDuration: String
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -52,7 +53,7 @@ struct WorkdayDetails: View {
                 Image(systemName: "pause.circle")
                     .foregroundColor(.secondary)
                 
-                Text("1:22")
+                Text(breakDuration)
                     .font(.footnote)
                     .foregroundColor(.secondary)
             }
@@ -67,7 +68,7 @@ struct WorkdayDetails_Previews: PreviewProvider {
                 .frame(width: 100, height: 100)
                 .padding()
             
-            WorkdayDetails(dayOfWeek: "Wednesday", dateString: "06.04.2020", startTime: "08:02", endTime: "17:44")
+            WorkdayDetails(dayOfWeek: "Wednesday", dateString: "06.04.2020", startTime: "08:02", endTime: "17:44", breakDuration: "0:44")
             .padding()
         }
         .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))

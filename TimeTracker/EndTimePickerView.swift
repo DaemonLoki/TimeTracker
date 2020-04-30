@@ -22,7 +22,7 @@ struct EndTimePickerView: View {
                 self.workday.unwrappedEnd
             },
             set: {
-                self.workday.end = $0
+                self.workday.end = self.workday.start!.withHourAndMinute(from: $0)
                 try? self.moc.save()
             }
         )

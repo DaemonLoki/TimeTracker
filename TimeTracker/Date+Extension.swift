@@ -22,6 +22,13 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    func headlineString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: self)
+    }
+    
     func difference(to date: Date, with breakDuration: Int = 0) -> String {
         let timeInterval = self.timeIntervalSince(date) - Double(breakDuration * 60)
         let formatter = DateComponentsFormatter()
@@ -52,5 +59,12 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: self)
+    }
+    
+    func withHourAndMinute(from date: Date) -> Date {
+        let hour = Calendar.current.component(.hour, from: date)
+        let minute = Calendar.current.component(.minute, from: date)
+        
+        return Calendar.current.date(bySettingHour: hour, minute: minute, second: 0, of: self) ?? Date()
     }
 }

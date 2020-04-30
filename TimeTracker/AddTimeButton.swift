@@ -47,7 +47,8 @@ struct AddTimeButton: View {
     
     func addEndDateToCurrentWorkday() {
         if workday.startTimeSet {
-            self.workday.end = Date()
+            guard let startDate = workday.start else { return }
+            self.workday.end = startDate.withHourAndMinute(from: Date())
             
             try? self.moc.save()
         }
