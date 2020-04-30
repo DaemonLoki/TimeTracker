@@ -14,9 +14,7 @@ struct WorkdaysView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Workday.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Workday.start, ascending: false)]) var workdays: FetchedResults<Workday>
     
-    @Binding var startTimeSet: Bool
-    @Binding var endTimeSet: Bool
-    @Binding var currentWorkday: Workday?
+    var currentWorkday: Workday
     
     @State private var selectedOption = 0
         
@@ -32,8 +30,7 @@ struct WorkdaysView: View {
                 .background(Color.offWhite)
                 
                 if self.selectedOption == 0 {
-                    DaysListView(workdays: self.workdays, currentWorkday: self.currentWorkday, startTimeSet: self.$startTimeSet, endTimeSet: self.$endTimeSet
-                    )
+                    DaysListView(workdays: self.workdays, currentWorkday: self.currentWorkday)
                 } else if self.selectedOption == 1 {
                     WeeksListView(workdays: self.workdays)
                 }

@@ -11,14 +11,8 @@ import SwiftUI
 struct TodayTimeView: View {
     
     @State private var endAngle: Double = 0.0
-
-    var startDate: Date
-    var startTimeSet: Bool
     
-    var endDate: Date
-    var endTimeSet: Bool
-    
-    var breakDuration: Double
+    var workday: Workday
     
     var body: some View {
         ZStack {
@@ -28,16 +22,16 @@ struct TodayTimeView: View {
                 Text("Start time:")
                     .font(.footnote)
                 
-                Text(startTimeSet ? startDate.hourString() : "--:--")
+                Text(self.workday.startTimeSet ? self.workday.start!.hourString() : "--:--")
                     .font(.title)
                 
-                if endTimeSet {
+                if self.workday.endTimeSet {
                     Group {
                         VStack {
                             Text("End time:")
                                 .font(.footnote)
                             
-                            Text(endDate.hourString())
+                            Text(self.workday.end!.hourString())
                                 .font(.title)
                         }
                     }
@@ -65,9 +59,9 @@ struct TodayTimeView: View {
     }
     
     func calculateDuration() -> Double {
-        if startTimeSet {
-            let currentEnd = endTimeSet ? endDate : Date()
-            let workingTimeInMinutes = Double(currentEnd.timeIntervalSince(startDate) / 60) - breakDuration
+        if workday.startTimeSet {
+            let currentEnd = workday.unwrappedEnd
+            let workingTimeInMinutes = Double(currentEnd.timeIntervalSince(workday.unwrappedStart) / 60) - workday.breakDuration
             let workdayInMinutes = Double(60 * 8) // 8 hours
             let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
             let portionOfWorkdayDegree = Double(portionOfWorkday * 360.0)
@@ -78,10 +72,9 @@ struct TodayTimeView: View {
     }
 }
 
-/*
+
 struct TodayTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayTimeView(startDate: Date(), endDate: Date(), breakDuration: 0)
+        TodayTimeView(workday: Workday.example)
     }
 }
- */

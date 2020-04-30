@@ -21,6 +21,22 @@ extension Workday {
     @NSManaged public var end: Date?
     @NSManaged public var breakDuration: Double
     
+    public var unwrappedStart: Date {
+        start ?? Date()
+    }
+    
+    public var unwrappedEnd: Date {
+        end ?? Date()
+    }
+    
+    var startTimeSet: Bool {
+        start != nil
+    }
+    
+    var endTimeSet: Bool {
+        end != nil
+    }
+    
     public var dateString: String {
         start?.dateString() ?? "Unknown"
     }
@@ -42,4 +58,23 @@ extension Workday {
         guard let start = start else { return 0.0 }
         return (Double((self.end ?? Date()).timeIntervalSince(start) / 60) - breakDuration) / 60.0
     }
+    
+    public var workDur: Double {
+        let workingTimeInMinutes = Double(unwrappedEnd.timeIntervalSince(unwrappedStart) / 60) - breakDuration
+        let workdayInMinutes = Double(60 * 8) // 8 hours
+        let portionOfWorkday = workingTimeInMinutes / workdayInMinutes
+        return Double(portionOfWorkday * 360.0)
+    }
+}
+
+extension Workday {
+    
+    static var example: Workday {
+        let workday = Workday()
+        workday.start = Date()
+        workday.end = Date()
+        workday.breakDuration = 0.5
+        return workday
+    }
+    
 }

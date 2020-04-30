@@ -10,12 +10,10 @@ import SwiftUI
 
 struct ShowWorkdaysButton: View {
     
-    @Binding var startTimeSet: Bool
-    @Binding var endTimeSet: Bool
-    @Binding var workDay: Workday?
+    var workDay: Workday
     
     var body: some View {
-        NavigationLink(destination: WorkdaysView(startTimeSet: $startTimeSet, endTimeSet: $endTimeSet, currentWorkday: $workDay)) {
+        NavigationLink(destination: WorkdaysView(currentWorkday: workDay)) {
             Image(systemName: "list.bullet")
         }
         .buttonStyle(SimpleButtonStyle())
@@ -24,6 +22,6 @@ struct ShowWorkdaysButton: View {
 
 struct ShowWorkdaysButton_Previews: PreviewProvider {
     static var previews: some View {
-        ShowWorkdaysButton(startTimeSet: Binding.constant(true), endTimeSet: Binding.constant(false), workDay: Binding.constant(nil))
+        ShowWorkdaysButton(workDay: .example)
     }
 }

@@ -11,14 +11,8 @@ import SwiftUI
 struct SetTimeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) var moc
-    @Binding var startDate: Date
-    @Binding var endDate: Date
-    @Binding var workday: Workday?
-    @Binding var breakDuration: Double
     
-    @State private var startHours: Int = 0
-    
-    let pickerHeight: CGFloat = 80
+    var workday: Workday
     
     var body: some View {
         ZStack {
@@ -26,20 +20,11 @@ struct SetTimeView: View {
             
             ScrollView {
                 VStack {
-                    TimePickerView(selectionDate: self.$startDate, title: "Start", dateRangeThrough: ...self.endDate)
+                    StartTimePickerView(workday: self.workday)
                     
-                    TimePickerView(selectionDate: self.$endDate, title: "End", dateRangeTo: self.startDate...)
+                    EndTimePickerView(workday: self.workday)
                     
-                    Stepper("Pause: \(Int(self.breakDuration))", onIncrement: {
-                        self.breakDuration += 5
-                    }, onDecrement: {
-                        if self.breakDuration >= 5 {
-                            self.breakDuration -= 5
-                        }
-                    })
-                        .padding()
-                        .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
-                        .padding()
+                    PauseView(workday: self.workday)
                     
                     HStack {
                         Text(self.calculateWorkTime())
@@ -67,14 +52,10 @@ struct SetTimeView: View {
     }
     
     func calculateWorkTime() -> String {
-        return self.endDate.difference(to: self.startDate, with: Int(self.breakDuration))
+        return workday.unwrappedEnd.difference(to: workday.unwrappedStart, with: Int(workday.breakDuration))
     }
     
     func saveWorkday() {
-        guard let day = self.workday else { return }
-        day.start = self.startDate
-        day.end = self.endDate
-        day.breakDuration = Double(self.breakDuration)
         try? self.moc.save()
         self.presentationMode.wrappedValue.dismiss()
     }
@@ -82,6 +63,6 @@ struct SetTimeView: View {
 
 struct SetTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        SetTimeView(startDate: Binding.constant(Date()), endDate: Binding.constant(Date()), workday: Binding.constant(nil), breakDuration: Binding.constant(0))
+        SetTimeView(workday: Workday.example)
     }
 }

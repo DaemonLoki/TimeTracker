@@ -13,9 +13,7 @@ struct DaysListView: View {
     @Environment(\.managedObjectContext) var moc
     
     var workdays: FetchedResults<Workday>
-    var currentWorkday: Workday?
-    @Binding var startTimeSet: Bool
-    @Binding var endTimeSet: Bool
+    var currentWorkday: Workday
     
     var body: some View {
         List {
@@ -24,9 +22,8 @@ struct DaysListView: View {
                     .listRowBackground(Color.offWhite)
             }
             .onDelete(perform: removeDay)
-            .background(Color.offWhite)
-            
         }
+        .background(Color.offWhite)
     }
     
     func removeDay(at offsets: IndexSet) {
@@ -36,12 +33,6 @@ struct DaysListView: View {
         self.moc.delete(workday)
         
         try? self.moc.save()
-        
-        guard let currentWorkdayUnwrapped = currentWorkday else { return }
-        if workday == currentWorkdayUnwrapped {
-            startTimeSet = false
-            endTimeSet = false
-        }
     }
 }
 
@@ -52,3 +43,9 @@ struct DaysListView_Previews: PreviewProvider {
     }
 }
 */
+
+struct DaysListView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
