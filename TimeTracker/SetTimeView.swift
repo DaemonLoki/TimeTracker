@@ -12,7 +12,7 @@ struct SetTimeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) var moc
     
-    var workday: Workday
+    @ObservedObject var workday: Workday
     
     var body: some View {
         ZStack {

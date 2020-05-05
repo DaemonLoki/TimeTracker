@@ -7,12 +7,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct TodayTimeView: View {
     
     @State private var endAngle: Double = 0.0
     
-    var workday: Workday
+    @ObservedObject var workday: Workday
     
     var body: some View {
         ZStack {

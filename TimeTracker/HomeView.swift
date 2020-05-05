@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeView: View {
     
-    var workday: Workday
+    @ObservedObject var workday: Workday
     var fetchedResults: FetchedResults<Workday>
     
     var body: some View {
@@ -20,7 +21,7 @@ struct HomeView: View {
                 
                 VStack {
                     ZStack {
-                        TodayTimeView(workday: workday)
+                        TodayTimeView(workday: fetchedResults.first ?? workday)
                     
                         if workday.startTimeSet {
                             EditButton(workday: workday)

@@ -14,7 +14,7 @@ struct WorkdaysView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(entity: Workday.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Workday.start, ascending: false)]) var workdays: FetchedResults<Workday>
     
-    var currentWorkday: Workday
+    @ObservedObject var currentWorkday: Workday
     
     @State private var selectedOption = 0
         
