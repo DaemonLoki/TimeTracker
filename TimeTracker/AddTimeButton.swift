@@ -58,7 +58,7 @@ struct AddTimeButton: View {
 struct AddTimeButton_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.offWhite
+            Color.myBackground
             
             AddTimeButton(workday: .example)
         }.edgesIgnoringSafeArea(.all)

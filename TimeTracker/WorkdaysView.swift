@@ -27,7 +27,7 @@ struct WorkdaysView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
-                .background(Color.offWhite)
+                .background(Color.myBackground)
                 
                 if self.selectedOption == 0 {
                     DaysListView(workdays: self.workdays, currentWorkday: self.currentWorkday)
@@ -35,7 +35,7 @@ struct WorkdaysView: View {
                     WeeksListView(workdays: self.workdays)
                 }
             }
-            .background(Color.offWhite)
+            .background(Color.myBackground)
             .navigationBarTitle("Your workdays")
     }
     

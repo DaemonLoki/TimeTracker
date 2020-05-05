@@ -11,7 +11,7 @@ import SwiftUI
 
 extension Color {
     
-    static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
+    //static let offWhite = Color(red: 225 / 255, green: 225 / 255, blue: 235 / 255)
     
     static let codecampVeryDarkBlue = Color(red: 0 / 255, green: 114 / 255, blue: 141 / 255)
     static let codecampLessDarkBlue = Color(red: 53 / 255, green: 144 / 255, blue: 166 / 255)
@@ -27,5 +27,6 @@ extension Color {
 
 extension UIColor {
     
-    static let offWhite = UIColor(red: 225 / 255, green: 225 / 255, blue: 235 / 255, alpha: 1)
+    //static let offWhite = UIColor(red: 225 / 255, green: 225 / 255, blue: 235 / 255, alpha: 1)
+    static let myBackground = UIColor(named: "myBackground")
 }

@@ -17,7 +17,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.offWhite
+                Color.myBackground
                 
                 VStack {
                     ZStack {

@@ -37,7 +37,13 @@ struct WorkdayCardView: View {
 
 struct WorkdayCardView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkdayCardView(workday: .example)
+        Group {
+            WorkdayCardView(workday: .example)
+                .environment(\.colorScheme, .light)
+            
+            WorkdayCardView(workday: .example)
+            .environment(\.colorScheme, .dark)
+        }
     }
 }
 

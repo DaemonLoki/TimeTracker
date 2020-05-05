@@ -47,9 +47,9 @@ struct WeeksListView: View {
         List {
             ForEach(self.workWeeks, id: \.self) { (workWeek: WorkWeek) in
                 WorkweekCardView(workWeek: workWeek)
-                    .listRowBackground(Color.offWhite)
+                    .listRowBackground(Color.myBackground)
             }
         }
-        .background(Color.offWhite)
+        .background(Color.myBackground)
     }
 }

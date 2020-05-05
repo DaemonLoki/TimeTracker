@@ -12,7 +12,7 @@ import SwiftUI
 struct LightBackground<S: Shape>: View {
     var shape: S
     var isHighlighted: Bool = false
-    var backgroundColor: Color = .offWhite
+    var backgroundColor: Color = .myBackground
     
     var body: some View {
         Group {
@@ -68,7 +68,7 @@ struct DarkBackground<S: Shape>: View {
 struct AdaptiveBackground<S: Shape>: View {
     var shape: S
     var isHighlighted: Bool = false
-    var backgroundColor: Color = .offWhite
+    var backgroundColor: Color = .myBackground
     
     @Environment(\.colorScheme) var colorScheme
     

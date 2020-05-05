@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let contentView = ContentView().environment(\.managedObjectContext, context)
         
         // set navigation bar backgroundColor and list separators to None
-        UINavigationBar.appearance().backgroundColor = UIColor.offWhite
+        UINavigationBar.appearance().backgroundColor = UIColor.myBackground
         UITableView.appearance().separatorStyle = .none
         UITableView.appearance().backgroundColor = .clear
 

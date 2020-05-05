@@ -19,11 +19,11 @@ struct DaysListView: View {
         List {
             ForEach(self.workdays, id: \.self) { (workday: Workday) in
                 WorkdayCardView(workday: workday)
-                    .listRowBackground(Color.offWhite)
+                    .listRowBackground(Color.myBackground)
             }
             .onDelete(perform: removeDay)
         }
-        .background(Color.offWhite)
+        .background(Color.myBackground)
     }
     
     func removeDay(at offsets: IndexSet) {

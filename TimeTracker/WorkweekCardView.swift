@@ -56,7 +56,7 @@ struct WorkweekCardView: View {
 struct WorkweekCardView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Color.offWhite
+            Color.myBackground
             
             WorkweekCardView(workWeek: WorkWeek(weekOfYear: 1, year: 2020, workdays: []))
         }

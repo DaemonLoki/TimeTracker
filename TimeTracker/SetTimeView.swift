@@ -16,7 +16,7 @@ struct SetTimeView: View {
     
     var body: some View {
         ZStack {
-            Color.offWhite
+            Color.myBackground
             
             ScrollView {
                 VStack {
@@ -46,7 +46,7 @@ struct SetTimeView: View {
                     
                 }
             }
-            .background(Color.offWhite)
+            .background(Color.myBackground)
             .navigationBarTitle(workday.start?.headlineString() ?? "Today")
         }
     }

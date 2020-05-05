@@ -17,7 +17,7 @@ struct TodayTimeView: View {
     
     var body: some View {
         ZStack {
-            Color.offWhite
+            Color.myBackground
             
             VStack {
                 Text("Start time:")
@@ -48,10 +48,7 @@ struct TodayTimeView: View {
             )
             .padding(40)
             .background(
-                Circle()
-                    .fill(Color.offWhite)
-                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                    .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                AdaptiveBackground(shape: Circle())
             )
         }
         .onAppear {
