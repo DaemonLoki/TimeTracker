@@ -23,7 +23,7 @@ struct WorkdayCardView: View {
                     WorkdayDetails(dayOfWeek: workday.start!.getNameOfWeekday(), dateString: self.workday.dateString, startTime: workday.startTime, endTime: workday.endTime, breakDuration: workday.breakDurationString)
                 }
                 .padding()
-                .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
+                .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10)))
                 .padding(.vertical)
             NavigationLink(destination: SetTimeView(workday: self.workday)) {
                 EmptyView()

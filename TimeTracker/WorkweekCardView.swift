@@ -44,10 +44,10 @@ struct WorkweekCardView: View {
                 }
             }
             .padding()
-            .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10), isHighlighted: true))
+            .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10), isHighlighted: true))
         }
         .padding()
-        .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
+        .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10)))
         .padding()
     }
     

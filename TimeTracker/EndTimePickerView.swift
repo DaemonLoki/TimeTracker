@@ -43,7 +43,7 @@ struct EndTimePickerView: View {
             .clipped()
         }
         .padding()
-        .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
+        .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10)))
         .padding()
     }
 }

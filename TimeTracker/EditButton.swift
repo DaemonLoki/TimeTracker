@@ -22,7 +22,7 @@ struct EditButton: View {
         }
         .padding(20)
         .contentShape(Circle())
-        .background(FancyBackground(shape: Circle(), backgroundColor: .codecampVeryDarkBlue))
+        .background(AdaptiveBackground(shape: Circle(), backgroundColor: .codecampVeryDarkBlue))
         .offset(x: currentOffset, y: currentOffset)
         .scaleEffect(currentScale)
         .animation(.easeInOut)

@@ -28,7 +28,7 @@ struct WorkdayCardDuration: View {
                     .animation(.interpolatingSpring(mass: 1, stiffness: 25, damping: 8, initialVelocity: 1))
             )
             .padding(15)
-            .background(FancyBackground(shape: Circle(), isHighlighted: true))
+            .background(AdaptiveBackground(shape: Circle(), isHighlighted: true))
             .onAppear {
                 self.endAngle = self.workDuration
         }

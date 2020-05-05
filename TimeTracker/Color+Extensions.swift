@@ -17,6 +17,11 @@ extension Color {
     static let codecampLessDarkBlue = Color(red: 53 / 255, green: 144 / 255, blue: 166 / 255)
     static let codecampABitLightBlue = Color(red: 104 / 255, green: 174 / 255, blue: 191 / 255)
     static let codecampReallyLightBlue = Color(red: 151 / 255, green: 203 / 255, blue: 214 / 255)
+    
+    static let myBackground = Color("myBackground")
+    
+    static let darkStart = Color(red: 50 / 255, green: 60 / 255, blue: 65 / 255)
+    static let darkEnd = Color(red: 25 / 255, green: 25 / 255, blue: 30 / 255)
 }
 
 

@@ -29,7 +29,7 @@ struct WelcomeView: View {
     
     var body: some View {
         ZStack {
-            Color.offWhite
+            Color.myBackground
             
             VStack(spacing: 20) {
                 Text("Welcome")
@@ -97,6 +97,12 @@ struct WelcomeView: View {
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        Group {
+            WelcomeView()
+                .environment(\.colorScheme, .light)
+            
+            WelcomeView()
+                .environment(\.colorScheme, .dark)
+        }
     }
 }

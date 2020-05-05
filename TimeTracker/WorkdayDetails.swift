@@ -71,6 +71,6 @@ struct WorkdayDetails_Previews: PreviewProvider {
             WorkdayDetails(dayOfWeek: "Wednesday", dateString: "06.04.2020", startTime: "08:02", endTime: "17:44", breakDuration: "0:44")
             .padding()
         }
-        .background(FancyBackground(shape: RoundedRectangle(cornerRadius: 10)))
+        .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10)))
     }
 }
