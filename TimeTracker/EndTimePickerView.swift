@@ -12,7 +12,7 @@ struct EndTimePickerView: View {
     
     @Environment(\.managedObjectContext) var moc
     
-    var workday: Workday
+    @ObservedObject var workday: Workday
     
     let pickerHeight: CGFloat = 80
     

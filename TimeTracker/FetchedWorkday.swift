@@ -17,7 +17,7 @@ struct FetchedWorkday<Workday: NSManagedObject, Content: View>: View {
     let content: (Workday, FetchedResults<Workday>) -> Content
     
     var body: some View {
-        if workdays.first != nil {
+        if workdays.count > 0 {
             return AnyView(self.content(self.workdays.first!, self.workdays))
         } else {
             return AnyView(WelcomeView())

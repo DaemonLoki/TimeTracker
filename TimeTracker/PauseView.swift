@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PauseView: View {
     
-    var workday: Workday
+    @ObservedObject var workday: Workday
     
     @State private var breakDuration = 0
     
