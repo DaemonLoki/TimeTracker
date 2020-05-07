@@ -27,24 +27,29 @@ struct StartTimePickerView: View {
             }
         )
         
-        return HStack(spacing: 20) {
-            Text("Start")
-                .font(.headline)
-                .multilineTextAlignment(.leading)
+        return ZStack {
+            Color.myBackground
             
-            Spacer()
-            
-            DatePicker(selection: currentDate, in: ...workday.unwrappedEnd, displayedComponents: .hourAndMinute) {
-                Text("Time")
+            HStack(spacing: 20) {
+                Text("Start")
+                    .font(.headline)
+                    .multilineTextAlignment(.leading)
+                
+                Spacer()
+                
+                DatePicker(selection: currentDate, in: ...workday.unwrappedEnd, displayedComponents: .hourAndMinute) {
+                    Text("Time")
+                }
+                .datePickerStyle(WheelDatePickerStyle())
+                .frame(width: 140, height: self.pickerHeight)
+                .padding()
+                .clipped()
             }
-            .datePickerStyle(WheelDatePickerStyle())
-            .frame(width: 140, height: self.pickerHeight)
             .padding()
-            .clipped()
+            .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10)))
+            .padding()
+            .navigationBarTitle("Start time")
         }
-        .padding()
-        .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10)))
-        .padding()    
     }
 }
 

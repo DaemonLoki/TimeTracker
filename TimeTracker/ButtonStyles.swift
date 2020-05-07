@@ -117,11 +117,11 @@ struct ButtonStyles_Previews: PreviewProvider {
                 Color.myBackground
                 
                 VStack {
-                    AdaptiveBackground(shape: Circle())
+                    AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 20))
                         .frame(width: 200, height: 200)
                         .padding()
                     
-                    AdaptiveBackground(shape: Circle(), isHighlighted: true)
+                    AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 20), isHighlighted: true)
                         .frame(width: 200, height: 200)
                         .padding()
                 }

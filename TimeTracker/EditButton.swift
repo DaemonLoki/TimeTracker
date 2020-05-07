@@ -8,15 +8,16 @@
 
 import SwiftUI
 
-struct EditButton: View {
+struct EditButton<V: View>: View {
     
     var workday: Workday
+    var destination: V
     
     @State private var currentOffset: CGFloat = 0
     @State private var currentScale: CGFloat = 0
     
     var body: some View {
-        NavigationLink(destination: SetTimeView(workday: workday)) {
+        NavigationLink(destination: destination) {
             Image(systemName: "pencil")
                 .foregroundColor(.white)
         }
@@ -35,6 +36,6 @@ struct EditButton: View {
 
 struct EditButton_Previews: PreviewProvider {
     static var previews: some View {
-        EditButton(workday: .example)
+        EditButton(workday: .example, destination: EmptyView())
     }
 }

@@ -43,7 +43,7 @@ struct TodayTimeView: View {
             .padding(60)
             .background(
                 Arc(endAngle: endAngle)
-                    .stroke(LinearGradient(Color.codecampVeryDarkBlue, Color.codecampLessDarkBlue, Color.codecampABitLightBlue, Color.codecampReallyLightBlue), style: StrokeStyle(lineWidth: 30, lineCap: .round))
+                    .stroke(LinearGradient.cocGradient, style: StrokeStyle(lineWidth: 30, lineCap: .round))
                     .animation(.interpolatingSpring(mass: 1, stiffness: 25, damping: 8, initialVelocity: 1))
             )
             .padding(40)

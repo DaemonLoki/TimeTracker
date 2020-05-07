@@ -24,7 +24,7 @@ struct HomeView: View {
                         TodayTimeView(workday: fetchedResults.first ?? workday)
                     
                         if workday.startTimeSet {
-                            EditButton(workday: workday)
+                            EditButton(workday: workday, destination: SetTimeView(workday: workday))
                         }
                     }
                     

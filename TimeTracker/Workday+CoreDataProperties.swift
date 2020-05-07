@@ -59,6 +59,10 @@ extension Workday {
         return (Double((self.end ?? Date()).timeIntervalSince(start) / 60) - breakDuration) / 60.0
     }
     
+    public var workDurationString: String {
+        return String(format: "%.2f h", self.workDurationInH)
+    }
+    
     public var workDur: Double {
         let workingTimeInMinutes = Double(unwrappedEnd.timeIntervalSince(unwrappedStart) / 60) - breakDuration
         let workdayInMinutes = Double(60 * 8) // 8 hours

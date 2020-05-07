@@ -14,22 +14,39 @@ struct SetTimeView: View {
     
     @ObservedObject var workday: Workday
     
+    @State private var endAngle: Double = 0
+    
     var body: some View {
-        ZStack {
+        let durBinding = Binding<Double>(
+            get: {
+                self.workday.workDur
+        }, set: {
+            print("Is set to \($0)")
+        })
+        return ZStack {
             Color.myBackground
             
             ScrollView {
                 VStack {
-                    StartTimePickerView(workday: self.workday)
+                    StartTimeView(workday: self.workday)
                     
-                    EndTimePickerView(workday: self.workday)
+                    EndTimeView(workday: self.workday)
                     
                     PauseView(workday: self.workday)
                     
                     HStack {
-                        Text(self.calculateWorkTime())
-                            .font(.largeTitle)
-                            .padding()
+                        Text(self.workday.workDurationString)
+                            .font(.subheadline)
+                            .foregroundColor(.codecampVeryDarkBlue)
+                            .frame(width: 60)
+                            .padding(.vertical, 20)
+                            .background(
+                                Arc(endAngle: durBinding.wrappedValue)
+                                    .stroke(LinearGradient(Color.codecampVeryDarkBlue, Color.codecampLessDarkBlue, Color.codecampABitLightBlue, Color.codecampReallyLightBlue), style: StrokeStyle(lineWidth: 6, lineCap: .round))
+                                    .animation(.interpolatingSpring(mass: 1, stiffness: 25, damping: 8, initialVelocity: 1))
+                            )
+                            .padding(15)
+                            .background(AdaptiveBackground(shape: Circle(), isHighlighted: true))
                         
                         Spacer()
                         
