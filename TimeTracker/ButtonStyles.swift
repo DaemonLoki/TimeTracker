@@ -93,3 +93,41 @@ struct SimpleButtonStyle: ButtonStyle {
         )
     }
 }
+
+struct ButtonStyles_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ZStack {
+                Color.myBackground
+                
+                VStack {
+                    AdaptiveBackground(shape: Circle())
+                        .frame(width: 200, height: 200)
+                        .padding()
+                    
+                    AdaptiveBackground(shape: Circle(), isHighlighted: true)
+                        .frame(width: 200, height: 200)
+                        .padding()
+                }
+            }
+            .edgesIgnoringSafeArea(.all)
+            .environment(\.colorScheme, .light)
+            
+            ZStack {
+                Color.myBackground
+                
+                VStack {
+                    AdaptiveBackground(shape: Circle())
+                        .frame(width: 200, height: 200)
+                        .padding()
+                    
+                    AdaptiveBackground(shape: Circle(), isHighlighted: true)
+                        .frame(width: 200, height: 200)
+                        .padding()
+                }
+            }
+            .edgesIgnoringSafeArea(.all)
+            .environment(\.colorScheme, .dark)
+        }
+    }
+}

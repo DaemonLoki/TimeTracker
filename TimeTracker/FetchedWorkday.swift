@@ -13,6 +13,7 @@ struct FetchedWorkday<Workday: NSManagedObject, Content: View>: View {
     
     var fetchRequest: FetchRequest<Workday>
     var workdays: FetchedResults<Workday> { fetchRequest.wrappedValue }
+    var currentDate: Date
     
     let content: (Workday, FetchedResults<Workday>) -> Content
     
@@ -24,17 +25,17 @@ struct FetchedWorkday<Workday: NSManagedObject, Content: View>: View {
         }
     }
     
-    init(@ViewBuilder content: @escaping (Workday, FetchedResults<Workday>) -> Content) {
-        fetchRequest = FetchRequest<Workday>(entity: Workday.entity(), sortDescriptors: [], predicate: FetchedWorkday.createCurrentDayPredicate())
+    init(currentDate: Date, @ViewBuilder content: @escaping (Workday, FetchedResults<Workday>) -> Content) {
+        self.currentDate = currentDate
+        self.fetchRequest = FetchRequest<Workday>(entity: Workday.entity(), sortDescriptors: [], predicate: FetchedWorkday.createCurrentDayPredicate(for: Date()))
         self.content = content
     }
     
-    static func createCurrentDayPredicate() -> NSCompoundPredicate {
+    static func createCurrentDayPredicate(for date: Date) -> NSCompoundPredicate {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
         
         // get today's start and end
-        let date = Date()
         let todayFrom = calendar.startOfDay(for: date)
         let todayTo = calendar.date(byAdding: .day, value: 1, to: todayFrom)!
         

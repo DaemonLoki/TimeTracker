@@ -47,7 +47,6 @@ struct WelcomeView: View {
                 
                 Text("See how much you work and know when it is okay to take a break.")
                     .font(.body)
-                    
                     .scaleEffect(subtext2Scale)
                     .opacity(subtext2Opacity)
                     .multilineTextAlignment(.center)

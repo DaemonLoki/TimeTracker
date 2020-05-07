@@ -11,9 +11,14 @@ import CoreData
 
 struct ContentView: View {
     
+    @State private var currentDate = Date()
+    
     var body: some View {
-        FetchedWorkday { (workday: Workday, workdays: FetchedResults<Workday>) in
+        FetchedWorkday(currentDate: self.currentDate) { (workday: Workday, workdays: FetchedResults<Workday>) in
             HomeView(workday: workday, fetchedResults: workdays)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { (_) in
+            self.currentDate = Date()
         }
     }
 }
