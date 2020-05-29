@@ -32,7 +32,7 @@ struct WeeksListView: View {
             let weekOfYear = day.getWeekOfYear()
             let dayOfWeek = day.getDayOfWeek()
             
-            let workWeekDay = WorkWeek.Day(dayOfWeek: dayOfWeek, workDuration: workday.workDurationInH)
+            let workWeekDay = WorkWeek.Day(dayOfWeek: dayOfWeek, workDuration: workday.workDurationInMinutes / 60.0)
             
             if let _ = workWeeks[weekOfYear] {
                 workWeeks[weekOfYear]!.1.append(workWeekDay)

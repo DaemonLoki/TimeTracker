@@ -54,13 +54,13 @@ extension Workday {
         return end.difference(to: start, with: Int(self.breakDuration))
     }
     
-    public var workDurationInH: Double {
+    public var workDurationInMinutes: Double {
         guard let start = start else { return 0.0 }
-        return (Double((self.end ?? Date()).timeIntervalSince(start) / 60) - breakDuration) / 60.0
+        return (Double((self.end ?? Date()).timeIntervalSince(start) / 60) - breakDuration)
     }
     
     public var workDurationString: String {
-        return String(format: "%.2f h", self.workDurationInH)
+        return String(format: "%d:%.0f h", Int(self.workDurationInMinutes / 60), self.workDurationInMinutes.truncatingRemainder(dividingBy: 60))
     }
     
     public var workDur: Double {

@@ -33,8 +33,6 @@ struct WorkdayCardView: View {
     
 }
 
-
-
 struct WorkdayCardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
