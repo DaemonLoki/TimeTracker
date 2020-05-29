@@ -60,7 +60,7 @@ extension Workday {
     }
     
     public var workDurationString: String {
-        return String(format: "%d:%.0f h", Int(self.workDurationInMinutes / 60), self.workDurationInMinutes.truncatingRemainder(dividingBy: 60))
+        return String(format: "%d:%02.0f h", Int(self.workDurationInMinutes / 60), self.workDurationInMinutes.truncatingRemainder(dividingBy: 60))
     }
     
     public var workDur: Double {
