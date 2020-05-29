@@ -28,29 +28,60 @@ struct WorkweekCardView: View {
             }
             .padding(.vertical)
             
-            HStack {
-                ForEach(self.workWeek.listOfWorkDays, id: \.self) { (day: WorkWeek.Day) in
-                    VStack {
-                        Spacer()
-                        
-                        Capsule()
-                            .fill(LinearGradient(Color.codecampVeryDarkBlue, Color.codecampLessDarkBlue, Color.codecampABitLightBlue, Color.codecampReallyLightBlue))
-                            .frame(width: 25, height: CGFloat(day.workDuration * 10))
-                        
-                        
-                        Text("\(day.dayOfWeek)")
-                            .font(.footnote)
+            VStack {
+                HStack {
+                    GraphView(points: self.workWeek.listOfWorkDays.map({ (day: WorkWeek.Day) -> Double in
+                        day.workDuration
+                    }))
+                        .frame(height: 250)
+                    
+                
+                }
+                
+                HStack {
+                    ForEach(self.workWeek.listOfWorkDays, id: \.self) { (day: WorkWeek.Day) in
+                        Group {
+                            Text("\(self.mapIndexToWorkday(day.dayOfWeek))")
+                                .foregroundColor(.white)
+                                .font(.footnote)
+                            
+                            if day.dayOfWeek < self.workWeek.listOfWorkDays.count - 1 {
+                                Spacer()
+                            }
+                        }
                     }
                 }
+                
+                
             }
             .padding()
-            .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10), isHighlighted: true))
+            .background(LinearGradient.cocGradient)
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
         }
         .padding()
-        .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10)))
+        .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 20, style: .continuous)))
         .padding()
     }
     
+    func mapIndexToWorkday(_ index: Int) -> String {
+        switch index {
+        case 0...1:
+            return "S"
+        case 2:
+            return "M"
+        case 3:
+            return "T"
+        case 4:
+            return "W"
+        case 5:
+            return "T"
+        case 6:
+            return "F"
+        default:
+            return "Error"
+        }
+    }
+        
 }
 
 struct WorkweekCardView_Previews: PreviewProvider {
@@ -58,7 +89,12 @@ struct WorkweekCardView_Previews: PreviewProvider {
         ZStack {
             Color.myBackground
             
-            WorkweekCardView(workWeek: WorkWeek(weekOfYear: 1, year: 2020, workdays: []))
+            WorkweekCardView(workWeek: WorkWeek(weekOfYear: 1, year: 2020, workdays: [
+                .init(dayOfWeek: 2, workDuration: 8.2),
+                .init(dayOfWeek: 3, workDuration: 7.2),
+                .init(dayOfWeek: 4, workDuration: 9.2),
+                .init(dayOfWeek: 5, workDuration: 6.4),
+                .init(dayOfWeek: 6, workDuration: 7.4)]))
         }
         .edgesIgnoringSafeArea(.all)
     }

@@ -35,6 +35,7 @@
 		AC8510AA241911420083F4AC /* WorkdaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510A9241911420083F4AC /* WorkdaysView.swift */; };
 		AC8510AC24191E850083F4AC /* WorkdayCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510AB24191E850083F4AC /* WorkdayCardView.swift */; };
 		AC8510AE24191FD50083F4AC /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8510AD24191FD50083F4AC /* Date+Extension.swift */; };
+		AC8F613F2481393A00560436 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F613E2481393A00560436 /* GraphView.swift */; };
 		ACB6791B24194E160037B75F /* SetTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6791A24194E160037B75F /* SetTimeView.swift */; };
 		ACB6793D241A08870037B75F /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6793C241A08870037B75F /* ButtonStyles.swift */; };
 		ACB6793F241A08C70037B75F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB6793E241A08C70037B75F /* Color+Extensions.swift */; };
@@ -75,6 +76,7 @@
 		AC8510A9241911420083F4AC /* WorkdaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdaysView.swift; sourceTree = "<group>"; };
 		AC8510AB24191E850083F4AC /* WorkdayCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkdayCardView.swift; sourceTree = "<group>"; };
 		AC8510AD24191FD50083F4AC /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		AC8F613E2481393A00560436 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		ACB6791A24194E160037B75F /* SetTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTimeView.swift; sourceTree = "<group>"; };
 		ACB6793C241A08870037B75F /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		ACB6793E241A08C70037B75F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				AC25AF7A242D6586001ACDC1 /* WorkweekCardView.swift */,
+				AC8F613E2481393A00560436 /* GraphView.swift */,
 			);
 			name = WorkweekCard;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				AC8510A82418F26C0083F4AC /* Workday+CoreDataProperties.swift in Sources */,
 				AC8510AA241911420083F4AC /* WorkdaysView.swift in Sources */,
 				AC4A31C62464397E00FB4517 /* EndTimeView.swift in Sources */,
+				AC8F613F2481393A00560436 /* GraphView.swift in Sources */,
 				AC647A38243B425700A3CB00 /* WorkdayDetails.swift in Sources */,
 				AC4C2639245AA65C008CE86A /* StartTimePickerView.swift in Sources */,
 				AC4C263E245AAAEA008CE86A /* WelcomeView.swift in Sources */,
