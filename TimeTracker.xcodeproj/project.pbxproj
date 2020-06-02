@@ -44,6 +44,7 @@
 		ACB67945241C121D0037B75F /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB67944241C121D0037B75F /* Arc.swift */; };
 		ACC23BCE242D54E8006A38EC /* DaysListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC23BCD242D54E8006A38EC /* DaysListView.swift */; };
 		ACDF9E9824866A0600B72D13 /* CGFloat+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF9E9724866A0600B72D13 /* CGFloat+Constants.swift */; };
+		ACDF9E9A2486D8A600B72D13 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF9E992486D8A600B72D13 /* CalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		ACB67944241C121D0037B75F /* Arc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		ACC23BCD242D54E8006A38EC /* DaysListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysListView.swift; sourceTree = "<group>"; };
 		ACDF9E9724866A0600B72D13 /* CGFloat+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Constants.swift"; sourceTree = "<group>"; };
+		ACDF9E992486D8A600B72D13 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				AC4C263F245AC92A008CE86A /* PauseView.swift */,
 				AC5CE39E24642BFA0006FF2F /* StartTimeView.swift */,
 				AC4A31C52464397E00FB4517 /* EndTimeView.swift */,
+				ACDF9E992486D8A600B72D13 /* CalendarView.swift */,
 			);
 			name = SetTimeScreen;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				AC8510AA241911420083F4AC /* WorkdaysView.swift in Sources */,
 				AC4A31C62464397E00FB4517 /* EndTimeView.swift in Sources */,
 				AC8F613F2481393A00560436 /* GraphView.swift in Sources */,
+				ACDF9E9A2486D8A600B72D13 /* CalendarView.swift in Sources */,
 				AC647A38243B425700A3CB00 /* WorkdayDetails.swift in Sources */,
 				AC4C2639245AA65C008CE86A /* StartTimePickerView.swift in Sources */,
 				AC4C263E245AAAEA008CE86A /* WelcomeView.swift in Sources */,

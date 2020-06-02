@@ -17,6 +17,13 @@ struct WorkdaysView: View {
     @ObservedObject var currentWorkday: Workday
     
     @State private var selectedOption = 0
+    
+    var daysSet: Set<Date> {
+        let days = self.workdays.compactMap { (workday: Workday) -> Date? in
+            return workday.start
+        }
+        return Set<Date>(days)
+    }
         
     var body: some View {
             VStack {
@@ -36,10 +43,8 @@ struct WorkdaysView: View {
                 }
             }
             .background(Color.myBackground)
-            .navigationBarItems(trailing: Button(action: {
-                // open calendar view
-            }, label: {
-                Image(systemName: "plus")
+            .navigationBarItems(trailing: NavigationLink(destination: CalendarView(setDays: daysSet), label: {
+                Text("Add day")
             }))
             .navigationBarTitle("Your workdays")
     }
