@@ -20,17 +20,18 @@ struct CalendarView: View {
     var body: some View {
         ZStack {
             Color.myBackground
+            
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     ForEach(months, id: \.self) { month in
-                        MonthView(month: month) { date in
+                        MonthView(month: month, setDays: self.setDays) { date in
                             Text("30")
                                 .hidden()
                                 .padding(8)
-                                .background(Color.blue)
+                                .background(Color.codecampVeryDarkBlue)
                                 .clipShape(Circle())
                                 .padding(.vertical, 4)
-                                .overlay(Text(String(self.calendar.component(.day, from: date))))
+                                .overlay(Text(String(self.calendar.component(.day, from: date))).foregroundColor(.white))
                             
                         }
                     }
@@ -45,10 +46,12 @@ struct MonthView<DateView>: View where DateView: View{
     @Environment(\.calendar) var calendar
     
     let month: Date
+    let setDays: Set<Date>
     let content: (Date) -> DateView
     
-    init(month: Date, @ViewBuilder content: @escaping (Date) -> DateView) {
+    init(month: Date, setDays: Set<Date>, @ViewBuilder content: @escaping (Date) -> DateView) {
         self.month = month
+        self.setDays = setDays
         self.content = content
     }
     
@@ -66,7 +69,7 @@ struct MonthView<DateView>: View where DateView: View{
                 .padding(.bottom, 10)
             
             ForEach(weeks, id: \.self) { week in
-                WeekView(week: week, content: self.content)
+                WeekView(week: week, setDays: self.setDays, content: self.content)
             }
         }
     }
@@ -76,10 +79,12 @@ struct WeekView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
     
     let week: Date
+    let setDays: Set<Date>
     let content: (Date) -> DateView
     
-    init(week: Date, @ViewBuilder content: @escaping (Date) -> DateView) {
+    init(week: Date, setDays: Set<Date>, @ViewBuilder content: @escaping (Date) -> DateView) {
         self.week = week
+        self.setDays = setDays
         self.content = content
     }
     
@@ -95,6 +100,9 @@ struct WeekView<DateView>: View where DateView: View {
                 HStack {
                     if self.calendar.isDate(self.week, equalTo: date, toGranularity: .month) {
                         self.content(date)
+                            .opacity(self.setDays.filter({ (setDate: Date) -> Bool in
+                                self.calendar.isDate(setDate, equalTo: date, toGranularity: .day)
+                            }).count == 1 ? 0.2 : 1.0)
                     } else {
                         self.content(date).hidden()
                     }
