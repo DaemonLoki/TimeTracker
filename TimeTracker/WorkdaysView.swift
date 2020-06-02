@@ -36,6 +36,11 @@ struct WorkdaysView: View {
                 }
             }
             .background(Color.myBackground)
+            .navigationBarItems(trailing: Button(action: {
+                // open calendar view
+            }, label: {
+                Image(systemName: "plus")
+            }))
             .navigationBarTitle("Your workdays")
     }
     
