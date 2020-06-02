@@ -43,6 +43,7 @@
 		ACB67943241A399E0037B75F /* TodayTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB67942241A399E0037B75F /* TodayTimeView.swift */; };
 		ACB67945241C121D0037B75F /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB67944241C121D0037B75F /* Arc.swift */; };
 		ACC23BCE242D54E8006A38EC /* DaysListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC23BCD242D54E8006A38EC /* DaysListView.swift */; };
+		ACDF9E9824866A0600B72D13 /* CGFloat+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF9E9724866A0600B72D13 /* CGFloat+Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		ACB67942241A399E0037B75F /* TodayTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTimeView.swift; sourceTree = "<group>"; };
 		ACB67944241C121D0037B75F /* Arc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		ACC23BCD242D54E8006A38EC /* DaysListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysListView.swift; sourceTree = "<group>"; };
+		ACDF9E9724866A0600B72D13 /* CGFloat+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Constants.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 				ACB67940241A08F50037B75F /* LinearGradient+Extensions.swift */,
 				ACB6793E241A08C70037B75F /* Color+Extensions.swift */,
 				AC8510AD24191FD50083F4AC /* Date+Extension.swift */,
+				ACDF9E9724866A0600B72D13 /* CGFloat+Constants.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				AC647A38243B425700A3CB00 /* WorkdayDetails.swift in Sources */,
 				AC4C2639245AA65C008CE86A /* StartTimePickerView.swift in Sources */,
 				AC4C263E245AAAEA008CE86A /* WelcomeView.swift in Sources */,
+				ACDF9E9824866A0600B72D13 /* CGFloat+Constants.swift in Sources */,
 				AC8510962418DC0C0083F4AC /* ContentView.swift in Sources */,
 				AC8510A72418F26C0083F4AC /* Workday+CoreDataClass.swift in Sources */,
 				AC8510AC24191E850083F4AC /* WorkdayCardView.swift in Sources */,

@@ -56,10 +56,10 @@ struct WorkweekCardView: View {
             }
             .padding()
             .background(LinearGradient.cocGradient)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: .cornerRadius, style: .continuous))
         }
         .padding()
-        .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 20, style: .continuous)))
+        .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: .cornerRadius, style: .continuous)))
         .padding()
     }
     

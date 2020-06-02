@@ -51,13 +51,13 @@ struct DarkBackground<S: Shape>: View {
             if isHighlighted {
                 shape
                     .fill(LinearGradient(Color.darkEnd, Color.darkStart))
-                    .overlay(shape.stroke(LinearGradient(Color.darkStart, Color.darkEnd), lineWidth: 4))
+                    //.overlay(shape.stroke(LinearGradient(Color.darkStart, Color.darkEnd), lineWidth: 4))
                     .shadow(color: Color.darkStart, radius: 10, x: 5, y: 5)
                     .shadow(color: Color.darkEnd, radius: 10, x: -5, y: -5)
             } else {
                 shape
                     .fill(LinearGradient(Color.darkStart, Color.darkEnd))
-                    .overlay(shape.stroke(Color.darkEnd, lineWidth: 4))
+                    //.overlay(shape.stroke(Color.darkEnd, lineWidth: 4))
                     .shadow(color: Color.darkStart, radius: 10, x: -10, y: -10)
                     .shadow(color: Color.darkEnd, radius: 10, x: 10, y: 10)
             }
@@ -117,11 +117,11 @@ struct ButtonStyles_Previews: PreviewProvider {
                 Color.myBackground
                 
                 VStack {
-                    AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 20))
+                    AdaptiveBackground(shape: RoundedRectangle(cornerRadius: .cornerRadius, style: .continuous))
                         .frame(width: 200, height: 200)
                         .padding()
                     
-                    AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 20), isHighlighted: true)
+                    AdaptiveBackground(shape: RoundedRectangle(cornerRadius: .cornerRadius, style: .continuous), isHighlighted: true)
                         .frame(width: 200, height: 200)
                         .padding()
                 }

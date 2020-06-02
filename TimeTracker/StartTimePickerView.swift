@@ -48,7 +48,7 @@ struct StartTimePickerView: View {
                     .clipped()
                 }
                 .padding()
-                .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: 10)))
+                .background(AdaptiveBackground(shape: RoundedRectangle(cornerRadius: .cornerRadius, style: .continuous)))
                 .padding()
                 .navigationBarTitle("Start time")
                 

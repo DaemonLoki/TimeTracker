@@ -84,7 +84,7 @@ struct GraphView_Previews: PreviewProvider {
     static var previews: some View {
         GraphView(points: [2.3, 7.3, 8.2, 7.5, 6.3])
             .background(LinearGradient.cocGradient)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: .cornerRadius, style: .continuous))
             .padding()
     }
 }
